@@ -1,2 +1,2 @@
 # Dubbo-Customer
-Dubbo 消费者，配合SpringBoot-Seed-Collection项目一起运行
+Dubbo 消费者，配合SpringBoot-Seed项目一起运行
