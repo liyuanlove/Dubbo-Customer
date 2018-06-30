@@ -42,8 +42,8 @@ public class UserController {
     @ApiOperation(value = "添加用户",notes = "添加用户")
     /* 想在swagger中 输入user的json对象 就把下面的注释打开，想在每个输入框中输入User的属性值，就不打开*/
     /* 这两个注解 @ApiImplicitParam @RequestBody */
-    /*@ApiImplicitParam(name = "user",value = "用户",required = true,dataType = "User",paramType = "body")*/
-    public String add(/*@RequestBody*/ User user){
+    /*/-->ApiImplicitParam(name = "user",value = "用户",required = true,dataType = "User",paramType = "body")*/
+    public String add(/*/-->RequestBody*/ User user){
         int i = userService.add(user);
         if(i > 0){
             json.put("state",State.SUCCESS.getValue());
@@ -59,8 +59,8 @@ public class UserController {
     @ApiOperation(value = "更新用户",notes = "更新用户")
     /* 想在swagger中 输入user的json对象 就把下面的注释打开，想在每个输入框中输入User的属性值，就不打开*/
     /* @ApiImplicitParam @RequestBody */
-    /*@ApiImplicitParam(name = "user",value = "用户",required = true,dataType = "User",paramType = "head")*/
-    public String update(/*@RequestBody */User user){
+    /*/-->ApiImplicitParam(name = "user",value = "用户",required = true,dataType = "User",paramType = "head")*/
+    public String update(/*/-->RequestBody */User user){
         int i = userService.update(user);
         if(i > 0){
             json.put("state",State.SUCCESS.getValue());

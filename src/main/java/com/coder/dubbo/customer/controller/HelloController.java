@@ -1,5 +1,6 @@
 package com.coder.dubbo.customer.controller;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,10 +23,10 @@ public class HelloController {
         return o + "<br/>当前端口=" + req.getLocalPort() +  " sessionId=" + req.getSession().getId() +"<br/>";
     }
 
-    @RequestMapping(value = "/",method = {RequestMethod.GET})
 
-    public ModelAndView Index(){
+    @RequestMapping(value = "/",method = {RequestMethod.GET})
+    public ModelAndView Index(Model model){
+
         return new ModelAndView("index");
     }
-
 }

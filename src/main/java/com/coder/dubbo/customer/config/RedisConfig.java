@@ -58,7 +58,7 @@ public class RedisConfig {
 //     * @param redisTemplate
 //     * @return
 //     */
-//    /*@Bean
+//    /*/-->Bean
 //    public CacheManager cacheManager(RedisTemplate<?,?> redisTemplate) {
 //        CacheManager cacheManager = new RedisCacheManager(redisTemplate);
 //        return cacheManager;
