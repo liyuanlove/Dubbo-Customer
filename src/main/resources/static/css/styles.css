@@ -476,6 +476,7 @@ a.btn:hover {
   color: #666;
   font-weight: 300;
   position: relative;
+  left: -22px;
 }
 .testimonials-section .source .name {
   font-size: 16px;
@@ -484,23 +485,41 @@ a.btn:hover {
   color: #8a8a8a;
 }
 .testimonials-section .fa-quote-left {
+  width: 36px;
+  height: 36px;
+  /* display: inline-block; */
+  background: #00BCD4;
+  color: #fff;
+  /* -webkit-border-radius: 50%; */
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  -moz-background-clip: padding;
+  /* -webkit-background-clip: padding-box; */
+  /* background-clip: padding-box; */
+  /* text-align: center; */
+  padding-top: 10px;
+  font-size: 16px;
+}
+.testimonials-section .fa-quote-right {
   position: absolute;
-  left: -60px;
-  top: 0;
+  right: 0px;
+  /* top: 0; */
   width: 36px;
   height: 36px;
   display: inline-block;
   background: #00BCD4;
   color: #fff;
-  -webkit-border-radius: 50%;
+  /* -webkit-border-radius: 50%; */
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
   -moz-background-clip: padding;
   -webkit-background-clip: padding-box;
-  background-clip: padding-box;
-  text-align: center;
+  /* background-clip: padding-box; */
+  /* text-align: center; */
   padding-top: 10px;
   font-size: 16px;
 }
