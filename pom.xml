@@ -137,6 +137,13 @@
             <version>1.9.22</version><!-- 版本自己调整，也可不动 -->
         </dependency>
 
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot</artifactId>-->
+            <!--<version>1.5.4.RELEASE</version>-->
+        <!--</dependency>-->
+
     </dependencies>
 
     <build>
