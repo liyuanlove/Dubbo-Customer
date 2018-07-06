@@ -29,7 +29,7 @@ public class QueueController {
         }
     }
 
-    @JmsListener(destination=OUT_QUEUE)
+    @JmsListener(destination=OUT_QUEUE,containerFactory = "queueListenerFactory")
     public void consumerMessage(String text){
         System.out.println(text);
     }
