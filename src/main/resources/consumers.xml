@@ -8,7 +8,7 @@
        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <!-- 配置可参考 http://dubbo.io/User+Guide-zh.htm -->
     <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
-    <dubbo:application  name="dubbo-consumer2" />
+    <dubbo:application  name="dubbo-consumer" />
     <!-- 定义 zookeeper 注册中心地址及协议 -->
     <dubbo:registry id="zookeeper1" protocol="zookeeper" address="127.0.0.1:2180,127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183,127.0.0.1:2184" client="zkclient" />
     <!--<dubbo:registry id="zookeeper2" protocol="zookeeper" address="127.0.0.1:2182" client="zkclient" />-->
