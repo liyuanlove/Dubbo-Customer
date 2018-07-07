@@ -4,3 +4,4 @@
 ## [3.集成Swagger](http://www.wujunlong.com:10439/swagger-ui.html#/)
 ## [4.个人主页](http://www.wujunlong.com:10821)
 ## 5.集成ActiveMQ
+## 5.集成Springboot-Mail结合ActiveMQ实现异步发送邮件
