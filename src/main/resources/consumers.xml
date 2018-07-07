@@ -18,6 +18,7 @@
     <!-- 生成远程服务代理，可以和本地 bean 一样使用 testService -->
     <dubbo:reference id="userService" interface="com.coder.springbootdomecollection.service.UserService"/>
     <dubbo:reference id="zookeeperService" interface="com.coder.springbootdomecollection.service.ZookeeperService"/>
+    <dubbo:reference id="mailService" interface="com.coder.springbootdomecollection.service.MailService"/>
 
 
 </beans>
