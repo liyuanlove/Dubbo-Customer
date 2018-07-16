@@ -254,12 +254,12 @@
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><i class="fa fa-quote-left text-center"></i></div>
                 <div class="item col-lg-10 col-md-10 col-sm-10 col-xs-10 active">
                     <blockquote class="quote">
-                    <p><a th:href="@{'http://wujunlong.com:10439/druid/index.html'}" th:target="_blank" >SpringBoot + Druid 数据源监控</a></p>
+                    <p><a th:href="${#httpServletRequest.getScheme() + '://' + #httpServletRequest.getServerName() + ':' + #request.getServerPort()  + #request.getContextPath() + '/druid/index.html'}" th:target="_blank" >SpringBoot + Druid 数据源监控</a></p> <!-- http://wujunlong.com:10439/druid/index.html -->
                     </blockquote>
                 </div>
                 <div class="item col-lg-10 col-md-10 col-sm-10 col-xs-10">
                     <blockquote class="quote">
-                        <p><a th:href="@{'http://wujunlong.com:10439/swagger-ui.html'}" th:target="_blank">SpringBoot +Swagger2 Restful Api</a></p>
+                        <p><a th:href="${#httpServletRequest.getScheme() + '://' + #httpServletRequest.getServerName() + ':' + #request.getServerPort()  + #request.getContextPath() + '/swagger-ui.html'}" th:target="_blank">SpringBoot +Swagger2 Restful Api</a></p> <!-- @{'http://wujunlong.com:10439/swagger-ui.html'} -->
                     </blockquote>
                 </div>
                 <div class="item col-lg-10 col-md-10 col-sm-10 col-xs-10">
