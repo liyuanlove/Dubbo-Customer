@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/")
 public class HelloController {
 
     @RequestMapping("/getsession")
@@ -28,9 +27,5 @@ public class HelloController {
     }
 
 
-    @RequestMapping(value = "/",method = {RequestMethod.GET})
-    public ModelAndView Index(Model model){
 
-        return new ModelAndView("index");
-    }
 }
