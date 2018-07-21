@@ -1,6 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
-<head th:replace="header::header"></head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="zh-CN">
+<head>
+    <head th:include="header::header"></head>
+    <title>wujunlong.com</title>
+    <meta name="description" content="吴俊龙简历">
+    <!--/* Theme CSS */-->
+    <link id="theme-style" href="/wjl/css/styles.css" rel="stylesheet" th:href="@{'/wjl/css/styles.css'}">
+</head>
 <body>
 <header class="header">
     <div class="top-bar container-fluid">
@@ -23,10 +31,9 @@
             </li>
         </ul>
     </div>
-
     <div class="intro">
         <div class="container text-center">
-            <img class="profile-image img-circle" th:src="@{'/img/me.jpg'}" alt="吴俊龙">
+            <img class="profile-image img-circle" th:src="@{'/wjl/img/me.jpg'}" alt="吴俊龙">
             <h1 class="name">吴俊龙</h1>
             <div class="title">Java & .Net Developer</div>
             <div class="profile">
@@ -34,7 +41,6 @@
             </div>
         </div>
     </div>
-
     <div class="contact-info">
         <div class="container text-center">
             <ul class="list-inline">
@@ -47,7 +53,6 @@
             </ul>
         </div>
     </div>
-
     <div class="page-nav-space-holder hidden-xs">
         <div id="page-nav-wrapper" class="page-nav-wrapper text-center">
             <div class="container">
@@ -141,8 +146,6 @@
             </div>
         </div>
     </section>
-
-
     <section id="skills-section" class="skills-section section text-center">
         <h2 class="section-title">技术栈</h2>
         <div class="top-skills">
@@ -274,7 +277,7 @@
     <section id="contact-section" class="contact-section section">
         <h2 class="section-title">我能为你做什么</h2>
         <div class="intro">
-            <img class="profile-image img-circle" th:src="@{'/img/me.jpg'}" alt="吴俊龙">
+            <img class="profile-image img-circle" th:src="@{'/wjl/img/me.jpg'}" alt="吴俊龙">
             <div class="dialog">
                 <p>本人专注于后端开发，掌握目前互联网应用主流技术，对高并发,高吞吐量的应用开发有一定经验。</p>
                 <p><strong>我能为您提供如下的技术服务：</strong></p>
@@ -309,19 +312,13 @@
                 </ul>
             </div>
         </div>
-
     </section>
-
 </div>
-<footer th:replace="footer::footer"></footer>
-<script>
-    $(function () {
-        $('.wechat').popover({
-            trigger: 'hover',
-            html: true,
-            content: "<img src='/img/WeChat.png' width='100%;'>"
-        });
-    });
-</script>
+<footer>
+    <footer th:include="footer::footer"></footer>
+    <script type="text/javascript" src="/wjl/js/back-to-top.js" th:src="@{'/wjl/js/back-to-top.js'}"></script>
+    <script type="text/javascript" src="/wjl/js/main.js" th:src="@{'/wjl/js/main.js'}"></script>
+    <script type="text/javascript" src="/wjl/js/style-switcher.js" th:src="@{'/wjl/js/style-switcher.js'}"></script>
+</footer>
 </body>
 </html>
