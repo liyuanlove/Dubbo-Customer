@@ -1,6 +1,7 @@
 package com.coder.dubbo.customer.realm;
 
 import com.coder.springbootdomecollection.model.User;
+import com.coder.springbootdomecollection.service.SysUserService;
 import com.coder.springbootdomecollection.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -31,7 +32,7 @@ public class ShiroRealm extends AuthorizingRealm {
     private static org.slf4j.Logger logger = LoggerFactory.getLogger(ShiroRealm.class);
 
     @Autowired
-    private UserService userService;
+    private SysUserService sysUserService;
 
     /**
      * 验证用户身份，
