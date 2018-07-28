@@ -48,8 +48,10 @@ public class ShiroConfig {
 
         //配置shiro默认登录界面地址，前后端分离中登录界面跳转应由前端路由控制，后台仅返回json数据
         shiroFilterFactoryBean.setLoginUrl("/login");
+
         // 设置无权限时跳转的 url;
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
+
         // 登录成功后要跳转的链接
         shiroFilterFactoryBean.setSuccessUrl("/Main");
 
@@ -58,12 +60,12 @@ public class ShiroConfig {
         //限制同一帐号同时在线的个数。
         filtersMap.put(KickoutSessionControlFilter.KICKOUT, kickoutSessionControlFilter());
         shiroFilterFactoryBean.setFilters(filtersMap);
-        Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
 
+        // 权限控制map.
+        Map<String, String> filterChainDefinitionMap = new LinkedHashMap();
         //注意过滤器配置顺序 不能颠倒
         //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了，登出后跳转配置的loginUrl
         filterChainDefinitionMap.put("/logout", "logout");
-
         /**
         *
         * anon	无参，开放权限，可以理解为匿名用户或游客
@@ -80,19 +82,43 @@ public class ShiroConfig {
         *
         * */
         // 配置不会被拦截的链接 顺序判断
+        // 不会被拦截的链接
         filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/login", "anon");
+
+        // 退出登录的链接
         filterChainDefinitionMap.put("/logout", "logout");
-        //  用户，  需要角色权限 “user”
+
+        //  需要user权限的链接
         filterChainDefinitionMap.put("/user/**", "roles[user]");
-        //  管理员，需要角色权限 “admin”
+
+        //  需要admin权限的链接
         filterChainDefinitionMap.put("/admin/**", "roles[admin]");
+
         //其余接口一律拦截
         //主要这行代码必须放在所有权限设置的最后，不然会导致所有 url 都被拦截
         filterChainDefinitionMap.put("/**", "authc");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
+    }
+
+    @Bean
+    public SecurityManager securityManager() {
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
+        securityManager.setRealm(shiroRealm());
+        // 自定义session管理 使用redis
+        securityManager.setSessionManager(sessionManager());
+        // 自定义缓存实现 使用redis
+        securityManager.setCacheManager(cacheManager());
+        return securityManager;
+    }
+
+    @Bean
+    public ShiroRealm shiroRealm(){
+        ShiroRealm shiroRealm = new ShiroRealm();
+        shiroRealm.setCredentialsMatcher(hashedCredentialsMatcher());
+        return shiroRealm;
     }
 
     /**
@@ -109,17 +135,6 @@ public class ShiroConfig {
         return hashedCredentialsMatcher;
     }
 
-    @Bean
-    public SecurityManager securityManager() {
-        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        securityManager.setRealm(myShiroRealm());
-        // 自定义session管理 使用redis
-        securityManager.setSessionManager(sessionManager());
-        // 自定义缓存实现 使用redis
-        securityManager.setCacheManager(cacheManager());
-        return securityManager;
-    }
-
     /**
      * sessionManager
      * @return
@@ -129,6 +144,30 @@ public class ShiroConfig {
         MySessionManager mySessionManager = new MySessionManager();
         mySessionManager.setSessionDAO(redisSessionDAO());
         return mySessionManager;
+    }
+
+    /**
+     * RedisSessionDAO realm sessionDao层的实现 通过redis
+     * <p>
+     * 使用的是shiro-redis开源插件
+     */
+    @Bean
+    public RedisSessionDAO redisSessionDAO() {
+        RedisSessionDAO redisSessionDAO = new RedisSessionDAO();
+        redisSessionDAO.setRedisManager(redisManager());
+        return redisSessionDAO;
+    }
+
+    /**
+     * cacheManager 缓存 redis实现
+     * 使用的是shiro-redis开源插件
+     * @return
+     */
+    @Bean
+    public RedisCacheManager cacheManager() {
+        RedisCacheManager redisCacheManager = new RedisCacheManager();
+        redisCacheManager.setRedisManager(redisManager());
+        return redisCacheManager;
     }
 
     /**
@@ -148,58 +187,27 @@ public class ShiroConfig {
     }
 
     /**
-     * cacheManager 缓存 redis实现
-     * 使用的是shiro-redis开源插件
-     * @return
-     */
-    @Bean
-    public RedisCacheManager cacheManager() {
-        RedisCacheManager redisCacheManager = new RedisCacheManager();
-        redisCacheManager.setRedisManager(redisManager());
-        return redisCacheManager;
-    }
-
-    /**
-     * RedisSessionDAO realm sessionDao层的实现 通过redis
-     * <p>
-     * 使用的是shiro-redis开源插件
-     */
-    @Bean
-    public RedisSessionDAO redisSessionDAO() {
-        RedisSessionDAO redisSessionDAO = new RedisSessionDAO();
-        redisSessionDAO.setRedisManager(redisManager());
-        return redisSessionDAO;
-    }
-
-    /**
      * 开启shiro aop注解支持.
      * 使用代理方式;所以需要开启代码支持;
      * <dependency>
      *     <groupId>org.springframework.boot</groupId>
      *     <artifactId>spring-boot-starter-aop</artifactId>
      * </dependency>
-     * @param securityManager
+     * @param //securityManager
      * @return
      */
     @Bean
-    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager) {
+    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor() {
         AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
-        authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
+        authorizationAttributeSourceAdvisor.setSecurityManager(securityManager());
         return authorizationAttributeSourceAdvisor;
     }
-
-    @Bean
-    public ShiroRealm myShiroRealm() {
-        ShiroRealm myShiroRealm = new ShiroRealm();
-        return myShiroRealm;
-    }
-
 
     /**
      * 注册全局异常处理
      * @return
      */
-    @Bean(name = "exceptionHandler")
+    @Bean
     public HandlerExceptionResolver handlerExceptionResolver() {
         return new MyExceptionHandler();
     }
@@ -208,7 +216,7 @@ public class ShiroConfig {
      * 限制同一账号登录同时登录人数控制
      * @return
      */
-    @Bean("myFilter")
+    @Bean
     public KickoutSessionControlFilter kickoutSessionControlFilter() {
         KickoutSessionControlFilter kickoutSessionControlFilter = new KickoutSessionControlFilter();
         kickoutSessionControlFilter.setCacheManager(cacheManager());

@@ -19,6 +19,7 @@
     <dubbo:reference id="userService" interface="com.coder.springbootdomecollection.service.UserService"/>
     <dubbo:reference id="zookeeperService" interface="com.coder.springbootdomecollection.service.ZookeeperService"/>
     <dubbo:reference id="mailService" interface="com.coder.springbootdomecollection.service.MailService"/>
+    <dubbo:reference id="sysUserService" interface="com.coder.springbootdomecollection.service.SysUserService"/>
 
 
 </beans>

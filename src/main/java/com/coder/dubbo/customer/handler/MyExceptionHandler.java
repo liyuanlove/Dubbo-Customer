@@ -5,6 +5,7 @@ import com.alibaba.fastjson.support.spring.FastJsonJsonView;
 import com.coder.dubbo.customer.enumeration.MyException;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.authz.UnauthorizedException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import java.util.Map;
 /**
  * @author WJL
  */
+@ControllerAdvice
 public class MyExceptionHandler implements HandlerExceptionResolver {
 
     @Override

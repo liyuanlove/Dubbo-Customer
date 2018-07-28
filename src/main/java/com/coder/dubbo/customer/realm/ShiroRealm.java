@@ -1,8 +1,12 @@
 package com.coder.dubbo.customer.realm;
 
+import com.coder.springbootdomecollection.model.SysPermission;
+import com.coder.springbootdomecollection.model.SysRole;
+import com.coder.springbootdomecollection.model.SysUser;
 import com.coder.springbootdomecollection.model.User;
 import com.coder.springbootdomecollection.service.SysUserService;
 import com.coder.springbootdomecollection.service.UserService;
+import com.coder.util.CollectionUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -11,6 +15,9 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Collection;
+import java.util.List;
 
 /**
  * 在认证、授权内部实现机制中都有提到，最终处理都将交给Realm进行处理。
@@ -41,61 +48,44 @@ public class ShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         logger.info("---------------- 执行 Shiro 凭证认证 ----------------------");
-        return null;
+        System.out.println("ShiroRealm.doGetAuthenticationInfo()");
+        System.out.println(authenticationToken.getPrincipal());
+        System.out.println(authenticationToken.getCredentials());
+        //获取用户的输入的账号.
+        SysUser sysUser = (SysUser) authenticationToken.getPrincipal();
+        if (sysUser == null) {
+            return null;
+        }
+        sysUser = sysUserService.selectByPrimaryKey(sysUser.getId());
+        System.out.println("----->>userInfo="+sysUser.getName());
+
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
+                //用户名
+                sysUser,
+                //密码
+                sysUser.getPassword(),
+                //realm name
+                getName()
+        );
+        return authenticationInfo;
     }
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        return null;
+        System.out.println("权限配置-->ShiroRealm.doGetAuthorizationInfo()");
+        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
+        SysUser sysUser = (SysUser) principalCollection.getPrimaryPrincipal();
+        if(!CollectionUtils.isNullOrEmpty(sysUser.getRoleList())){
+            for (SysRole role : sysUser.getRoleList()) {
+                authorizationInfo.addRole(role.getRname());
+                if(!CollectionUtils.isNullOrEmpty(role.getSysPermissionList())){
+                    for (SysPermission p : role.getSysPermissionList()) {
+                        authorizationInfo.addStringPermission(p.getName());
+                    }
+                }
+            }
+        }
+        return authorizationInfo;
     }
-
-
-//    @Override
-//    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-//        //System.out.println("权限配置-->ShiroRealm.doGetAuthorizationInfo()");
-//        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-//        User user = (User) principals.getPrimaryPrincipal();
-//        for (SysRole role : user.getRoleList()) {
-//            authorizationInfo.addRole(role.getRole());
-//            for (SysPermission p : role.getPermissions()) {
-//                authorizationInfo.addStringPermission(p.getPermission());
-//            }
-//        }
-//        return authorizationInfo;
-//    }
-//
-//    /**
-//     * 主要是用来进行身份认证的，也就是说验证用户输入的账号和密码是否正确。
-//     * */
-//    @Override
-//    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
-//            throws AuthenticationException {
-//        //System.out.println("ShiroRealm.doGetAuthenticationInfo()");
-//        //获取用户的输入的账号.
-//        String username = (String) token.getPrincipal();
-//        //System.out.println(token.getCredentials());
-//        //通过username从数据库中查找 User对象，如果找到，没找到.
-//        //实际项目中，这里可以根据实际情况做缓存，如果不做，Shiro自己也是有时间间隔机制，2分钟内不会重复执行该方法
-//        UserInfo userInfo = userInfoService.findByUsername(username);
-//        System.out.println("----->>userInfo="+userInfo);
-//        if (userInfo == null) {
-//            return null;
-//        }
-//        //账户冻结
-//        if (userInfo.getState() == 1) {
-//            throw new LockedAccountException();
-//        }
-//        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-//                //用户名
-//                userInfo,
-//                //密码
-//                userInfo.getPassword(),
-//                //salt=username+salt
-//                ByteSource.Util.bytes(userInfo.getCredentialsSalt()),
-//                //realm name
-//                getName()
-//        );
-//        return authenticationInfo;
-//    }
 
 }
