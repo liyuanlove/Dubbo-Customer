@@ -17,7 +17,7 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 
 
 @Configuration
-@EnableCaching //启用缓存，这个注解很重要；
+//@EnableCaching //启用缓存，这个注解很重要；
 /**
  * (maxInactiveIntervalInSeconds = 60)
  * maxInactiveIntervalInSeconds 默认是1800秒过期，这里测试修改为60秒

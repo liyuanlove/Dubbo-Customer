@@ -26,7 +26,7 @@ import javax.servlet.Filter;
 /**
  * @author WJL
  */
-@Configuration
+//@Configuration
 public class ShiroConfig {
 
     @Value("${spring.redis.host}")
@@ -85,6 +85,8 @@ public class ShiroConfig {
         // 不会被拦截的链接
         filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/login", "anon");
+        filterChainDefinitionMap.put("/websocket", "anon");
+        filterChainDefinitionMap.put("/Websocket", "anon");
 
         // 退出登录的链接
         filterChainDefinitionMap.put("/logout", "logout");
