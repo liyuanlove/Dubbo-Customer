@@ -1,6 +1,5 @@
-const canGetCookie = 0;//是否支持存储Cookie 0 不支持 1 支持
-const ajaxmockjax = 1;//是否启用虚拟Ajax的请求响 0 不启用  1 启用
-//默认账号密码
+var canGetCookie = 0;
+var ajaxmockjax = 1;
 
 var truelogin = "kbcxy";
 var truepwd = "mcwjs";
@@ -26,12 +25,10 @@ function showCheck(a) {
     ctx.fillText(a, 0, 100);
 }
 $(document).keypress(function (e) {
-    // 回车键事件
     if (e.which == 13) {
         $('input[type="button"]').click();
     }
 });
-//粒子背景特效
 $('body').particleground({
     dotColor: '#E8DFE8',
     lineColor: '#133b88'
@@ -61,28 +58,26 @@ $('input[name="login"],input[name="pwd"]').keyup(function () {
 });
 var open = 0;
 layui.use('layer', function () {
-    var msgalert = '默认账号:' + truelogin + '<br/> 默认密码:' + truepwd;
-    var index = layer.alert(msgalert, { icon: 6, time: 4000, offset: 't', closeBtn: 0, title: '友情提示', btn: [], anim: 2, shade: 0 });
+    var msgalert = 'default account' + truelogin + '<br/> default password:' + truepwd;
+    var index = layer.alert(msgalert, { icon: 6, time: 4000, offset: 't', closeBtn: 0, title: 'Tips', btn: [], anim: 2, shade: 0 });
     layer.style(index, {
         color: '#777'
     });
-    //非空验证
     $('input[type="button"]').click(function () {
         var login = $('input[name="login"]').val();
         var pwd = $('input[name="pwd"]').val();
         var code = $('input[name="code"]').val();
         if (login == '') {
-            ErroAlert('请输入您的账号');
+            ErroAlert('Please Input Your Account !');
         } else if (pwd == '') {
-            ErroAlert('请输入密码');
+            ErroAlert('Please Input Your Password');
         } else if (code == '' || code.length != 4) {
-            ErroAlert('输入验证码');
+            ErroAlert('Please Input Code');
         } else {
-            //认证中..
             fullscreen();
-            $('.login').addClass('test'); //倾斜特效
+            $('.login').addClass('test');
             setTimeout(function () {
-                $('.login').addClass('testtwo'); //平移特效
+                $('.login').addClass('testtwo');
             }, 300);
             setTimeout(function () {
                 $('.authent').show().animate({ right: -320 }, {
@@ -96,24 +91,17 @@ layui.use('layer', function () {
                 }).addClass('visible');
             }, 500);
 
-            //登陆
             var JsonData = { login: login, pwd: pwd, code: code };
-            //此处做为ajax内部判断
             var url = "";
             if(JsonData.login == truelogin && JsonData.pwd == truepwd && JsonData.code.toUpperCase() == CodeVal.toUpperCase()){
                 url = "Ajax/Login";
             }else{
                 url = "Ajax/LoginFalse";
             }
-
-
             AjaxPost(url, JsonData,
                 function () {
-                    //ajax加载中
                 },
                 function (data) {
-                    //ajax返回
-                    //认证完成
                     setTimeout(function () {
                         $('.authent').show().animate({ right: 90 }, {
                             easing: 'easeOutQuint',
@@ -124,18 +112,15 @@ layui.use('layer', function () {
                             duration: 200,
                             queue: false
                         }).addClass('visible');
-                        $('.login').removeClass('testtwo'); //平移特效
+                        $('.login').removeClass('testtwo');
                     }, 2000);
                     setTimeout(function () {
                         $('.authent').hide();
                         $('.login').removeClass('test');
                         if (data.Status == 'ok') {
-                            //登录成功
                             $('.login div').fadeOut(100);
                             $('.success').fadeIn(1000);
                             $('.success').html(data.Text);
-                            //跳转操作
-
                         } else {
                             AjaxErro(data);
                         }
@@ -153,7 +138,6 @@ var fullscreen = function () {
     } else if (elem.requestFullScreen) {
         elem.requestFullscreen();
     } else {
-        //浏览器不支持全屏API或已被禁用
     }
 }
 if(ajaxmockjax == 1){
@@ -161,12 +145,12 @@ if(ajaxmockjax == 1){
         url: 'Ajax/Login',
         status: 200,
         responseTime: 50,
-        responseText: {"Status":"ok","Text":"登陆成功<br /><br />欢迎回来"}
+        responseText: {"Status":"ok","Text":"Login Success<br />Welcome back"}
     });
     $.mockjax({
         url: 'Ajax/LoginFalse',
         status: 200,
         responseTime: 50,
-        responseText: {"Status":"Erro","Erro":"账号名或密码或验证码有误"}
+        responseText: {"Status":"Erro","Erro":"Your account or password has error!"}
     });
 }

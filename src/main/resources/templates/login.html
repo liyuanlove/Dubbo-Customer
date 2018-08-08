@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      lang="zh-CN" >
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="zh-CN" >
 <head>
-    <!--<head th:include="header::header"></head>-->
     <title>登录</title>
-    <link href="/login/css/default.css" th:href="@{'/login/css/default.css'}" rel="stylesheet" type="text/css" />
-    <link href="/login/css/styles.css" th:href="@{'/login/css/styles.css'}" rel="stylesheet" type="text/css" />
-    <link href="/login/css/demo.css" th:href="@{'/login/css/demo.css'}" rel="stylesheet" type="text/css" />
-    <link href="/login/css/loaders.css" th:href="@{'/login/css/loaders.css'}" rel="stylesheet" type="text/css" />
-    <link href="/layui/css/layui.css" th:href="@{'/layui/css/layui.css'}" rel="stylesheet" type="text/css" />
+    <link href="/css/default.css" th:href="@{'/css/default.css'}" rel="stylesheet" />
+    <link href="/css/styles.css" th:href="@{'/css/styles.css'}" rel="stylesheet" />
+    <link href="/css/demo.css" th:href="@{'/css/demo.css'}" rel="stylesheet" />
+    <link href="/css/loaders.css" th:href="@{'/css/loaders.css'}" rel="stylesheet" />
+    <link href="/css/layui.css" th:href="@{'/css/layui.css'}" rel="stylesheet" />
 </head>
 <body>
     <div class='login'>
@@ -19,25 +16,25 @@
         <div class='login_fields'>
             <div class='login_fields__user'>
                 <div class='icon'>
-                    <img alt="" src='/login/img/user_icon_copy.png' th:src="@{'/login/img/user_icon_copy.png'}">
+                    <img alt="" src='/img/user_icon_copy.png' th:src="@{'/img/user_icon_copy.png'}">
                 </div>
                 <input name="login" placeholder='用户名' maxlength="16" type='text' autocomplete="off" value="kbcxy"/>
                 <div class='validation'>
-                    <img alt="" src='/login/img/tick.png' th:src="@{'/login/img/tick.png'}">
+                    <img alt="" src='/img/tick.png' th:src="@{'/img/tick.png'}">
                 </div>
             </div>
             <div class='login_fields__password'>
                 <div class='icon'>
-                    <img alt="" src='/login/img/lock_icon_copy.png' th:src="@{'/login/img/lock_icon_copy.png'}">
+                    <img alt="" src='/img/lock_icon_copy.png' th:src="@{'/img/lock_icon_copy.png'}">
                 </div>
                 <input name="pwd" placeholder='密码' maxlength="16" type='text' autocomplete="off">
                 <div class='validation'>
-                    <img alt="" src='/login/img/tick.png' th:src="@{'/login/img/tick.png'}">
+                    <img alt="" src='/img/tick.png' th:src="@{'/img/tick.png'}">
                 </div>
             </div>
             <div class='login_fields__password'>
                 <div class='icon'>
-                    <img alt="" src='/login/img/key.png' th:src="@{'/login/img/key.png'}">
+                    <img alt="" src='/img/key.png' th:src="@{'/img/key.png'}">
                 </div>
                 <input type="text" th:name="code" name="code" th:placeholder="验证码" placeholder='验证码' th:maxlength="4" maxlength="4" autocomplete="off" th:autocomplete="off" >
                 <div class='validation' style="opacity: 1; right: -5px;top: -3px;">
@@ -66,14 +63,16 @@
     </div>
     <div class="OverWindows"></div>
     <footer>
-        <footer th:include="footer::footer"></footer>
-        <script type="text/javascript" src="/jquery-ui/js/jquery-ui.min.js" th:src="@{'/jquery-ui/js/jquery-ui.min.js'}"></script>
-        <script type="text/javascript" src="/wjl/js/stopExecutionOnTimeout.js" th:src="@{'/wjl/js/stopExecutionOnTimeout.js'}"></script>
-        <script type="text/javascript" src="/layui/layui.js" th:src="@{'/layui/layui.js'}"></script>
-        <script type="text/javascript" src="/Particleground/js/Particleground.js" th:src="@{'/Particleground/js/Particleground.js'}"></script>
-        <script type="text/javascript" src="/wjl/js/Treatment.js" th:src="@{'/wjl/js/Treatment.js'}"></script>
-        <script type="text/javascript" src="/login/js/jquery.mockjax.js" th:src="@{'https://cdn.bootcss.com/jquery-mockjax/1.6.2/jquery.mockjax.min.js'}"></script>
-        <script type="text/javascript" src="/login/js/login.js" th:src="@{'/login/js/login.js'}"></script>
+        <div th:replace="footer::footer"></div>
+        <script type="text/javascript" src="/js/jquery-ui.min.js" th:src="@{'/js/jquery-ui.min.js'}"></script>
+        <script type="text/javascript" src="/js/layui/layui.js" th:src="@{'/js/layui/layui.js'}"></script>
+        <script type="text/javascript" src="/js/stopExecutionOnTimeout.js" th:src="@{'/js/stopExecutionOnTimeout.js'}"></script>
+        <script type="text/javascript" src="/js/Particleground.js" th:src="@{'/js/Particleground.js'}"></script>
+        <script type="text/javascript" src="/js/Treatment.js" th:src="@{'/js/Treatment.js'}"></script>
+        <script type="text/javascript" src="/js/jquery.mockjax.js" th:src="@{'https://cdn.bootcss.com/jquery-mockjax/1.6.2/jquery.mockjax.min.js'}"></script>
+        <script type="text/javascript" src="/js/login.js" th:src="@{'/js/login.js'}"></script>
     </footer>
+
+
 </body>
 </html>

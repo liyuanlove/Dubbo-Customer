@@ -122,8 +122,8 @@ public class WebSocketController {
 
 
     @GetMapping
-    @ResponseBody
     public ModelAndView Websocket() {
-        return new ModelAndView("Websocket");
+        ModelAndView mv = new ModelAndView("websocket");
+        return mv;
     }
 }

@@ -7,7 +7,7 @@
     <title>wujunlong.com</title>
     <meta name="description" content="吴俊龙简历">
     <!--/* Theme CSS */-->
-    <link id="theme-style" href="/wjl/css/styles.css" rel="stylesheet" th:href="@{'/wjl/css/styles.css'}">
+    <link rel="stylesheet" href="/css/wjl_styles.css" th:href="@{'/css/wjl_styles.css'}">
 </head>
 <body>
 <header class="header">
@@ -27,13 +27,13 @@
                 <a th:href="@{'javascript:void(0);'}" class="wechat" data-toggle="popover" data-placement="bottom"><i class="fa fa-weixin" aria-hidden="true"></i></a>
             </li>
             <li>
-                <a th:href="@{'http://www.wujunlong.com:10439/login'}" th:target="_blank"><i class="fa fa-align-right" aria-hidden="true"></i></a>
+                <a th:href="@{'/login'}" th:target="_blank"><i class="fa fa-align-right" aria-hidden="true"></i></a>
             </li>
         </ul>
     </div>
     <div class="intro">
         <div class="container text-center">
-            <img class="profile-image img-circle" th:src="@{'/wjl/img/me.jpg'}" alt="吴俊龙">
+            <img class="profile-image img-circle" src="/img/me.jpg" th:src="@{'/img/me.jpg'}" alt="吴俊龙">
             <h1 class="name">吴俊龙</h1>
             <div class="title">Java & .Net Developer</div>
             <div class="profile">
@@ -48,7 +48,7 @@
                 </li>
                 <li><i class="fa fa-phone"></i> <a th:href="@{'tel: 18633540415'}">18633540415</a></li>
                 <li class="website"><i class="fa fa-globe"></i>
-                    <a th:href="@{'http://www.wujunlong.com:10439'}" th:target="_blank">wujunlong.com</a>
+                    <a th:href="@{'http://wujunlong.com:10439'}" th:target="_blank">wujunlong.com</a>
                 </li>
             </ul>
         </div>
@@ -57,12 +57,12 @@
         <div id="page-nav-wrapper" class="page-nav-wrapper text-center">
             <div class="container">
                 <ul id="page-nav" class="nav page-nav list-inline">
-                    <li><a class="scrollto" th:href="@{'#experiences-section'}">工作经历</a></li>
-                    <li><a class="scrollto" th:href="@{'#eudcation-section'}">教育经历</a></li>
-                    <li><a class="scrollto" th:href="@{'#skills-section'}">技术栈</a></li>
-                    <li><a class="scrollto" th:href="@{'#portfolio-section'}">项目经历</a></li>
-                    <li><a class="scrollto" th:href="@{'#testimonials-section'}">线上项目</a></li>
-                    <li><a class="scrollto" th:href="@{'#contact-section'}">联系我</a></li>
+                    <li><a class="scrollto" th:href="@{'#experiences-section'}" href="#experiences-section">工作经历</a></li>
+                    <li><a class="scrollto" th:href="@{'#eudcation-section'}" href="#eudcation-section">教育经历</a></li>
+                    <li><a class="scrollto" th:href="@{'#skills-section'}" href="#skills-section">技术栈</a></li>
+                    <li><a class="scrollto" th:href="@{'#portfolio-section'}" href="#portfolio-section">项目经历</a></li>
+                    <li><a class="scrollto" th:href="@{'#testimonials-section'}" href="#testimonials-section">线上项目</a></li>
+                    <li><a class="scrollto" th:href="@{'#contact-section'}" href="#contact-section">联系我</a></li>
                 </ul>
             </div>
         </div>
@@ -257,12 +257,12 @@
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><i class="fa fa-quote-left text-center"></i></div>
                 <div class="item col-lg-10 col-md-10 col-sm-10 col-xs-10 active">
                     <blockquote class="quote">
-                    <p><a th:href="${#httpServletRequest.getScheme() + '://' + #httpServletRequest.getServerName() + ':' + #request.getServerPort()  + #request.getContextPath() + '/druid/index.html'}" th:target="_blank" >SpringBoot + Druid 数据源监控</a></p> <!-- http://wujunlong.com:10439/druid/index.html -->
+                    <p><a th:href="${'/druid/index.html'}" th:target="_blank" >SpringBoot + Druid 数据源监控</a></p>
                     </blockquote>
                 </div>
                 <div class="item col-lg-10 col-md-10 col-sm-10 col-xs-10">
                     <blockquote class="quote">
-                        <p><a th:href="${#httpServletRequest.getScheme() + '://' + #httpServletRequest.getServerName() + ':' + #request.getServerPort()  + #request.getContextPath() + '/swagger-ui.html'}" th:target="_blank">SpringBoot +Swagger2 Restful Api</a></p> <!-- @{'http://wujunlong.com:10439/swagger-ui.html'} -->
+                        <p><a th:href="${'/swagger-ui.html'}" th:target="_blank">SpringBoot +Swagger2 Restful Api</a></p>
                     </blockquote>
                 </div>
                 <div class="item col-lg-10 col-md-10 col-sm-10 col-xs-10">
@@ -277,7 +277,7 @@
     <section id="contact-section" class="contact-section section">
         <h2 class="section-title">我能为你做什么</h2>
         <div class="intro">
-            <img class="profile-image img-circle" th:src="@{'/wjl/img/me.jpg'}" alt="吴俊龙">
+            <img class="profile-image img-circle" src="/img/me.jpg" th:src="@{'/img/me.jpg'}" alt="吴俊龙">
             <div class="dialog">
                 <p>本人专注于后端开发，掌握目前互联网应用主流技术，对高并发,高吞吐量的应用开发有一定经验。</p>
                 <p><strong>我能为您提供如下的技术服务：</strong></p>
@@ -300,15 +300,18 @@
                 <p>如果贵公司使用这些技术并恰好需要掌握这类技术的开发人员，可以联系我~ 邮箱：<a th:href="@{'mailto:735626035@qq.com'}">735626035@qq.com</a>
                     或者Call Me At <a th:href="@{'tel:18633540415'}">18633540415</a></p>
                 <ul class="social list-inline">
-                    <li><a th:href="@{'https://github.com/wjlonger'}" th:target="_blank"><i class="fa fa-github"
-                                                                                            aria-hidden="true"></i></a>
+                    <li>
+                        <a th:href="@{'https://github.com/wjlonger'}" th:target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
                     </li>
-                    <li><a th:href="@{'http://sighttp.qq.com/msgrd?v=1&uin=735626035'}" th:target="_blank"><i
-                            class="fa fa-qq" aria-hidden="true"></i></a></li>
-                    <li><a th:href="@{'javascript:void(0);'}" class="wechat" data-toggle="popover" data-placement="top"><i
-                            class="fa fa-weixin" aria-hidden="true"></i></a></li>
-                    <li><a th:href="@{'http://www.wujunlong.com:10439/login'}" th:target="_blank"><i
-                            class="fa fa-align-right" aria-hidden="true"></i></a></li>
+                    <li>
+                        <a th:href="@{'http://sighttp.qq.com/msgrd?v=1&uin=735626035'}" th:target="_blank"><i class="fa fa-qq" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a th:href="@{'javascript:void(0);'}" class="wechat" data-toggle="popover" data-placement="top"><i class="fa fa-weixin" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a th:href="@{'login'}" th:target="_blank"><i class="fa fa-align-right" aria-hidden="true"></i></a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -316,9 +319,9 @@
 </div>
 <footer>
     <footer th:include="footer::footer"></footer>
-    <script type="text/javascript" src="/wjl/js/back-to-top.js" th:src="@{'/wjl/js/back-to-top.js'}"></script>
-    <script type="text/javascript" src="/wjl/js/main.js" th:src="@{'/wjl/js/main.js'}"></script>
-    <script type="text/javascript" src="/wjl/js/style-switcher.js" th:src="@{'/wjl/js/style-switcher.js'}"></script>
+    <script type="text/javascript" src="/js/back-to-top.js" th:src="@{'/js/back-to-top.js'}"></script>
+    <script type="text/javascript" src="/js/main.js" th:src="@{'/js/main.js'}"></script>
+    <script type="text/javascript" src="/js/style-switcher.js" th:src="@{'/js/style-switcher.js'}"></script>
 </footer>
 </body>
 </html>

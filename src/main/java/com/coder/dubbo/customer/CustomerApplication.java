@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.ImportResource;
 
-@SpringBootApplication//(exclude = DataSourceAutoConfiguration.class)
-@ImportResource(value = {"classpath:consumers.xml"}) // 使用 consumers.xml 配置；
-@EnableCaching // 开启缓存功能
+@SpringBootApplication
+@ImportResource(value = {"classpath:consumers.xml"})
+@EnableCaching
 @EnableAutoConfiguration
 public class CustomerApplication {
 

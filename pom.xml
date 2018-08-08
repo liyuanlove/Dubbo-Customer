@@ -12,23 +12,23 @@
     <description>Dubbo Customer</description>
 
 
-    <repositories>
-        <repository>
-            <id>aliyun</id>
-            <!-- 华为Maven镜像-->
-            <!--<url>https://repo.huaweicloud.com/repository/maven/</url>-->
-            <!-- 阿里Maven镜像-->
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
-        </repository>
-    </repositories>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>aliyun</id>-->
+            <!--&lt;!&ndash; 华为Maven镜像&ndash;&gt;-->
+            <!--&lt;!&ndash;<url>https://repo.huaweicloud.com/repository/maven/</url>&ndash;&gt;-->
+            <!--&lt;!&ndash; 阿里Maven镜像&ndash;&gt;-->
+            <!--<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
+            <!--<releases>-->
+                <!--<enabled>true</enabled>-->
+            <!--</releases>-->
+            <!--<snapshots>-->
+                <!--<enabled>true</enabled>-->
+                <!--<updatePolicy>always</updatePolicy>-->
+                <!--<checksumPolicy>fail</checksumPolicy>-->
+            <!--</snapshots>-->
+        <!--</repository>-->
+    <!--</repositories>-->
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -166,6 +166,7 @@
         <!-- 不使用如下依赖是因为
         会在程序中直接内嵌 ActivityMQ，也就是说不需要安装 ActiveMQ，但是这个如果服务宕机了，
         内嵌的 ActiveMQ 也就没了。关键，这个内嵌的 ActiveMQ 而无法看到图形化界面，所以这里没有直接使用注释里的依赖。-->
+        <!-- 但我还是用了，因为用了上边的  跑不起来 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-activemq</artifactId>

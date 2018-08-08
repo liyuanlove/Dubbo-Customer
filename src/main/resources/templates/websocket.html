@@ -6,19 +6,21 @@
     <title>wujunlong.com</title>
 </head>
 <body>
-Welcome<br/><input id="text" type="text"/>
+Welcome<br/><input id="text" type="text" /> <!-- th:id="text" th:type="text" -->
 
-<button onclick="send()">发送消息</button>
+<button onclick="send()" >发送消息</button> <!-- th:onclick="send()" -->
 <hr/>
-<button onclick="closeWebSocket()">关闭WebSocket连接</button>
+<button onclick="closeWebSocket()" >关闭WebSocket连接</button> <!-- th:onclick="closeWebSocket()" -->
 <hr/>
-<div id="message"></div>
+<div id="message" ></div>  <!-- th:id="message" -->
 </body>
-<script type="text/javascript">
+<script  type="text/javascript"> <!-- th:type="text/javascript" -->
     var websocket = null;
     //判断当前浏览器是否支持WebSocket
     if ('WebSocket' in window) {
-        websocket = new WebSocket("ws://localhost:8085/Websocket");
+        websocket = new WebSocket("ws://"+ window.location.hostname + ":" + window.location.port + "/Websocket");
+        //websocket = new WebSocket("ws://wujunlong.com:10439/Websocket");
+
     } else {
         alert('当前浏览器 Not support websocket')
     }

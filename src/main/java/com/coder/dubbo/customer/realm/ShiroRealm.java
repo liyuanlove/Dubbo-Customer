@@ -59,15 +59,7 @@ public class ShiroRealm extends AuthorizingRealm {
         sysUser = sysUserService.selectByPrimaryKey(sysUser.getId());
         System.out.println("----->>userInfo="+sysUser.getName());
 
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                //用户名
-                sysUser,
-                //密码
-                sysUser.getPassword(),
-                //realm name
-                getName()
-        );
-        return authenticationInfo;
+        return new SimpleAuthenticationInfo(sysUser,sysUser.getPassword(),getName());
     }
 
     @Override

@@ -1,51 +1,53 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
-<head th:fragment="header">
-    <!--/* 可以使用一下两种服务器端注释 */-->
-    <!--/*  */-->
-    <meta http-equiv="Content-Type" content="text/html;" charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" type="image/x-icon" th:href="@{'/favicon.ico'}"/>
-    <meta http-equiv="Window-target" content="_top"/>
-    <!--/* width 设置layout viewport 的宽度，为一个正整数，使用字符串”width-device”表示设备宽度 */-->
-    <!--/* initial-scale 设置页面的初始缩放值，为一个数字，可以带小数 */-->
-    <!--/* minimum-scale 允许用户的最小缩放值，为一个数字，可以带小数 */-->
-    <!--/* maximum-scale 允许用户的最大缩放值，为一个数字，可以带小数 */-->
-    <!--/* height 设置layout viewport 的高度，这个属性对我们并不重要，很少使用 */-->
-    <!--/* user-scalable 是否允许用户进行缩放，值为”no”或”yes”, no 代表不允许，yes代表允许 */-->
-    <!--/* target-densitydpi 值可以为一个数值或 high-dpi 、 medium-dpi、 low-dpi、 device-dpi 这几个字符串中的一个 */-->
-    <meta name="viewport" content="width=device-width,  initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!--/* 删除默认的苹果工具栏和菜单栏。需要显示工具栏和菜单栏时，不需要添加，默认值为yes，即显示。*/-->
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <!--/* 添加到主屏后的标题（iOS 6 新增） */-->
-    <meta name="apple-mobile-web-app-title" content="吴俊龙">
-    <!--/* 苹果手机title bar 颜色 */-->
-    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-    <!--/* 不将数字识别为手机号 */-->
-    <meta name="format-detection" content="telephone=no">
-    <!--/* 不识别地图 */-->
-    <meta name="format-detection" content="address=no">
-    <!--/* 不识别邮箱 */-->
-    <meta name="format-detection" content="email=no">
-    <link rel="dns-prefetch" href="//ajax.googleapis.com" th:href="@{'//ajax.googleapis.com'}">
-    <link rel="dns-prefetch" href="//partner.gooleadservices.com" th:href="@{'//partner.gooleadservices.com'}">
-    <link rel="dns-prefetch" href="//google.com.tw" th:href="@{'//google.com.tw'}">
-    <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" th:href="@{'//pagead2.googlesyndication.com'}">
-    <link rel="dns-prefetch" href="//google-analytics.com" th:href="@{'//google-analytics.com'}">
-    <link rel="dns-prefetch" href="//googleads.g.doubleclick.net" th:href="@{'//googleads.g.doubleclick.net'}">
-    <link rel="dns-prefetch" href="//pubads.g.doubleclick.net" th:href="@{'//pubads.g.doubleclick.net'}">
-    <link rel="dns-prefetch" href="//graph.facebook.com" th:href="@{'//graph.facebook.com'}">
-    <link rel="dns-prefetch" href="//graph.facebook.com" th:href="@{'//graph.facebook.com'}">
-    <link rel="dns-prefetch" href="//connect.facebook.net" th:href="@{'//connect.facebook.net'}">
-    <!--/* 禁止建立屏幕快照 */-->
-    <meta name="robots" content="noarchive">
-    <!--/* 关闭谷歌翻译 */-->
-    <meta name="google" content="notranslate">
-    <meta name="author" content="吴俊龙">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic" th:href="@{'https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic'}" type='text/css'>
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" th:href="@{'https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css'}">
-    <!--/* Plugins CSS */-->
-    <link rel="stylesheet" href="/font-awesome/css/font-awesome.css" th:href="@{'https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css'}">
-</head>
-<body></body>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+    <head></head>
+    <body>
+        <div th:fragment="header">
+            <!--/* 可以使用一下两种服务器端注释 */-->
+            <!--/*  */-->
+            <meta http-equiv="Content-Type" content="text/html;" charset="UTF-8"/>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <link rel="icon" type="image/x-icon" th:href="@{'/favicon.ico'}"/>
+            <meta http-equiv="Window-target" content="_top"/>
+            <!--/* width 设置layout viewport 的宽度，为一个正整数，使用字符串”width-device”表示设备宽度 */-->
+            <!--/* initial-scale 设置页面的初始缩放值，为一个数字，可以带小数 */-->
+            <!--/* minimum-scale 允许用户的最小缩放值，为一个数字，可以带小数 */-->
+            <!--/* maximum-scale 允许用户的最大缩放值，为一个数字，可以带小数 */-->
+            <!--/* height 设置layout viewport 的高度，这个属性对我们并不重要，很少使用 */-->
+            <!--/* user-scalable 是否允许用户进行缩放，值为”no”或”yes”, no 代表不允许，yes代表允许 */-->
+            <!--/* target-densitydpi 值可以为一个数值或 high-dpi 、 medium-dpi、 low-dpi、 device-dpi 这几个字符串中的一个 */-->
+            <meta name="viewport" content="width=device-width,  initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+            <!--/* 删除默认的苹果工具栏和菜单栏。需要显示工具栏和菜单栏时，不需要添加，默认值为yes，即显示。*/-->
+            <meta name="apple-mobile-web-app-capable" content="yes"/>
+            <!--/* 添加到主屏后的标题（iOS 6 新增） */-->
+            <meta name="apple-mobile-web-app-title" content="吴俊龙">
+            <!--/* 苹果手机title bar 颜色 */-->
+            <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+            <!--/* 不将数字识别为手机号 */-->
+            <meta name="format-detection" content="telephone=no">
+            <!--/* 不识别地图 */-->
+            <meta name="format-detection" content="address=no">
+            <!--/* 不识别邮箱 */-->
+            <meta name="format-detection" content="email=no">
+            <link rel="dns-prefetch" href="//ajax.googleapis.com" th:href="@{'//ajax.googleapis.com'}">
+            <link rel="dns-prefetch" href="//partner.gooleadservices.com" th:href="@{'//partner.gooleadservices.com'}">
+            <link rel="dns-prefetch" href="//google.com.tw" th:href="@{'//google.com.tw'}">
+            <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" th:href="@{'//pagead2.googlesyndication.com'}">
+            <link rel="dns-prefetch" href="//google-analytics.com" th:href="@{'//google-analytics.com'}">
+            <link rel="dns-prefetch" href="//googleads.g.doubleclick.net" th:href="@{'//googleads.g.doubleclick.net'}">
+            <link rel="dns-prefetch" href="//pubads.g.doubleclick.net" th:href="@{'//pubads.g.doubleclick.net'}">
+            <link rel="dns-prefetch" href="//graph.facebook.com" th:href="@{'//graph.facebook.com'}">
+            <link rel="dns-prefetch" href="//graph.facebook.com" th:href="@{'//graph.facebook.com'}">
+            <link rel="dns-prefetch" href="//connect.facebook.net" th:href="@{'//connect.facebook.net'}">
+            <!--/* 禁止建立屏幕快照 */-->
+            <meta name="robots" content="noarchive">
+            <!--/* 关闭谷歌翻译 */-->
+            <meta name="google" content="notranslate">
+            <meta name="author" content="吴俊龙">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic" th:href="@{'https://fonts.googleapis.com/css?family=Roboto:400,500,400italic,300italic,300,500italic,700,700italic,900,900italic'}" type='text/css'>
+            <link rel="stylesheet" href="/css/bootstrap.css" th:href="@{'https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css'}">
+            <!--/* Plugins CSS */-->
+            <link rel="stylesheet" href="/css/font-awesome.css" th:href="@{'https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css'}">
+        </div>
+    </body>
 </html>
