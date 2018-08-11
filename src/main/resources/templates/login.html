@@ -9,6 +9,7 @@
     <link href="/css/layui.css" th:href="@{'/css/layui.css'}" rel="stylesheet" />
 </head>
 <body>
+<form action="/login" method="post">
     <div class='login'>
         <div class='login_title'>
             <span>管理员登录</span>
@@ -18,7 +19,7 @@
                 <div class='icon'>
                     <img alt="" src='/img/user_icon_copy.png' th:src="@{'/img/user_icon_copy.png'}">
                 </div>
-                <input name="login" placeholder='用户名' maxlength="16" type='text' autocomplete="off" value="kbcxy"/>
+                <input name="name" placeholder='用户名' maxlength="16" type='text' autocomplete="off" value="kbcxy"/>
                 <div class='validation'>
                     <img alt="" src='/img/tick.png' th:src="@{'/img/tick.png'}">
                 </div>
@@ -27,7 +28,7 @@
                 <div class='icon'>
                     <img alt="" src='/img/lock_icon_copy.png' th:src="@{'/img/lock_icon_copy.png'}">
                 </div>
-                <input name="pwd" placeholder='密码' maxlength="16" type='text' autocomplete="off">
+                <input name="password" placeholder='密码' maxlength="16" type='text' autocomplete="off">
                 <div class='validation'>
                     <img alt="" src='/img/tick.png' th:src="@{'/img/tick.png'}">
                 </div>
@@ -42,7 +43,7 @@
                 </div>
             </div>
             <div class='login_fields__submit'>
-                <input type='button' value='登录'>
+                <button type='submit' value='登录'>登录</button>
             </div>
         </div>
         <div class='success'>
@@ -51,6 +52,7 @@
             <p>欢迎登陆后台管理系统</p>
         </div>
     </div>
+</form>
     <div class='authent'>
         <div class="loader" style="height: 44px;width: 44px;margin-left: 28px;">
             <div class="loader-inner ball-clip-rotate-multiple">
@@ -69,8 +71,8 @@
         <script type="text/javascript" src="/js/stopExecutionOnTimeout.js" th:src="@{'/js/stopExecutionOnTimeout.js'}"></script>
         <script type="text/javascript" src="/js/Particleground.js" th:src="@{'/js/Particleground.js'}"></script>
         <script type="text/javascript" src="/js/Treatment.js" th:src="@{'/js/Treatment.js'}"></script>
-        <script type="text/javascript" src="/js/jquery.mockjax.js" th:src="@{'https://cdn.bootcss.com/jquery-mockjax/1.6.2/jquery.mockjax.min.js'}"></script>
-        <script type="text/javascript" src="/js/login.js" th:src="@{'/js/login.js'}"></script>
+        <!--<script type="text/javascript" src="/js/jquery.mockjax.js" th:src="@{'https://cdn.bootcss.com/jquery-mockjax/1.6.2/jquery.mockjax.min.js'}"></script>-->
+        <!--<script type="text/javascript" src="/js/login.js" th:src="@{'/js/login.js'}"></script>-->
     </footer>
 
 

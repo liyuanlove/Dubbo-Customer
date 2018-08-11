@@ -47,19 +47,15 @@ public class ShiroRealm extends AuthorizingRealm {
      * */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        logger.info("---------------- 执行 Shiro 凭证认证 ----------------------");
-        System.out.println("ShiroRealm.doGetAuthenticationInfo()");
-        System.out.println(authenticationToken.getPrincipal());
-        System.out.println(authenticationToken.getCredentials());
-        //获取用户的输入的账号.
-        SysUser sysUser = (SysUser) authenticationToken.getPrincipal();
-        if (sysUser == null) {
+        UsernamePasswordToken token = (UsernamePasswordToken)authenticationToken;
+        // 从数据库中获取还用户名对应的user
+        SysUser sysUser = sysUserService.selectByUserName(token.getUsername());
+        if(null != sysUser){
+            return new SimpleAuthenticationInfo(sysUser,sysUser.getPassword(),getName());
+        }else{
             return null;
         }
-        sysUser = sysUserService.selectByPrimaryKey(sysUser.getId());
-        System.out.println("----->>userInfo="+sysUser.getName());
 
-        return new SimpleAuthenticationInfo(sysUser,sysUser.getPassword(),getName());
     }
 
     @Override
