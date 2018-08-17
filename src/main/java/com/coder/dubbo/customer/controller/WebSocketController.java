@@ -14,10 +14,10 @@ import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-@RequestMapping("/Websocket")
-@RestController
-@Scope("prototype")
-@ServerEndpoint("/Websocket")
+//@RequestMapping("/Websocket")
+//@RestController
+//@Scope("prototype")
+//@ServerEndpoint("/Websocket")
 //@Configuration
 /**
  * @ServerEndpoint 注解是一个类层次的注解，它的功能主要是将目前的类定义成一个websocket服务器端,

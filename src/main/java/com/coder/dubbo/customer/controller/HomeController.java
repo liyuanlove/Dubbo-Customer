@@ -66,7 +66,12 @@ public class HomeController {
     }
 
     @GetMapping("/Main")
-    public String Main(){
+    public String main(){
         return "main";
+    }
+
+    @GetMapping("/LoveDongQing")
+    public String loveDongQing(){
+        return "dongqing";
     }
 }
