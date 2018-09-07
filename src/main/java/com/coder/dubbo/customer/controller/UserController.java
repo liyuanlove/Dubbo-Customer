@@ -40,8 +40,7 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ApiOperation(value = "添加用户",notes = "添加用户")
-    /* 想在swagger中 输入user的json对象 就把下面的注释打开，想在每个输入框中输入User的属性值，就不打开*/
-    /* 这两个注解 @ApiImplicitParam @RequestBody */
+    /* 想在swagger中 输入user的json对象 就把下面的注释打开，想在每个输入框中输入User的属性值，就不打开这两个注解 @ApiImplicitParam @RequestBody*/
     /*/-->ApiImplicitParam(name = "user",value = "用户",required = true,dataType = "User",paramType = "body")*/
     public String add(/*/-->RequestBody*/ User user){
         int i = userService.add(user);
@@ -57,8 +56,7 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.PUT)
     @ApiOperation(value = "更新用户",notes = "更新用户")
-    /* 想在swagger中 输入user的json对象 就把下面的注释打开，想在每个输入框中输入User的属性值，就不打开*/
-    /* @ApiImplicitParam @RequestBody */
+    /* 想在swagger中 输入user的json对象 就把下面的注释打开，想在每个输入框中输入User的属性值，就不打开 @ApiImplicitParam @RequestBody*/
     /*/-->ApiImplicitParam(name = "user",value = "用户",required = true,dataType = "User",paramType = "head")*/
     public String update(/*/-->RequestBody */User user){
         int i = userService.update(user);
