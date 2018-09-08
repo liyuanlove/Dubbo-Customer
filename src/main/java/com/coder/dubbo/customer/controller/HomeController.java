@@ -41,7 +41,7 @@ public class HomeController {
             try {
                 // 执行登陆
                 subject.login(token);
-                return "/Main";
+                return "/main";
             } catch (AuthenticationException ae) {
                 System.out.println("登录失败--->" + ae.getMessage());
             }
@@ -54,7 +54,7 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/GetSession")
+    @GetMapping("/getsession")
     @ResponseBody
     public String getSessionId(HttpServletRequest req){
         Object o = req.getSession().getAttribute("springboot");
@@ -65,12 +65,12 @@ public class HomeController {
         return o + "<br/>当前端口=" + req.getLocalPort() +  " sessionId=" + req.getSession().getId() +"<br/>";
     }
 
-    @GetMapping("/Main")
+    @GetMapping("/main")
     public String main(){
         return "main";
     }
 
-    @GetMapping("/LoveDongQing")
+    @GetMapping("/lovedongqing")
     public String loveDongQing(){
         return "dongqing";
     }

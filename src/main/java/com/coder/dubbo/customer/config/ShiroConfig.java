@@ -94,14 +94,16 @@ public class ShiroConfig {
         // 不会被拦截的链接
         filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/login", "anon");
-        filterChainDefinitionMap.put("/GetSession", "anon");
-        filterChainDefinitionMap.put("/Websocket", "anon");
-        filterChainDefinitionMap.put("/LoveDongQing", "anon");
+        filterChainDefinitionMap.put("/getsession", "anon");
+        filterChainDefinitionMap.put("/websocket", "anon");
+        filterChainDefinitionMap.put("/lovedongqing", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/css/**", "anon");
         filterChainDefinitionMap.put("/img/**", "anon");
         filterChainDefinitionMap.put("/fonts/**", "anon");
         filterChainDefinitionMap.put("/favicon.ico", "anon");
+        filterChainDefinitionMap.put("/doublecolorball", "anon");
+        filterChainDefinitionMap.put("/doublecolorball/**", "anon");
 
         //注意过滤器配置顺序 不能颠倒
         //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了，登出后跳转配置的loginUrl

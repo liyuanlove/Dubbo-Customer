@@ -24,7 +24,7 @@ public class MyExceptionHandler implements HandlerExceptionResolver {
     public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception ex) {
         ModelAndView mv = new ModelAndView();
         FastJsonJsonView view = new FastJsonJsonView();
-        Map<String, Object> attributes = new HashMap<>();
+        Map<String, Object> attributes = new HashMap<>(1);
         if (ex instanceof UnauthenticatedException) {
             attributes.put("code", MyException.TOKEN.getCode());
             attributes.put("msg", MyException.TOKEN.getMsg());
