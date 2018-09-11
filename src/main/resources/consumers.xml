@@ -21,6 +21,7 @@
     <dubbo:reference id="mailService" interface="com.coder.springbootdomecollection.service.MailService"/>
     <dubbo:reference id="sysUserService" interface="com.coder.springbootdomecollection.service.SysUserService"/>
     <dubbo:reference id="doubleColorBallService" interface="com.coder.springbootdomecollection.service.DoubleColorBallService"/>
+    <dubbo:reference id="doubleColorBallOrderService" interface="com.coder.springbootdomecollection.service.DoubleColorBallOrderService"/>
 
 
 </beans>

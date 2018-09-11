@@ -79,7 +79,7 @@ function setCookie(name, value, hours, path) {
     var expires = new Date();
     expires.setTime(expires.getTime() + hours * 3600000);
     path = path == "" ? "" : ";path=" + path;
-    _expires = (typeof hours) == "string" ? "" : ";expires=" + expires.toUTCString();
+    var _expires = (typeof hours) == "string" ? "" : ";expires=" + expires.toUTCString();
     document.cookie = name + "=" + value + _expires + path;
 }
 //cookie名获取值  

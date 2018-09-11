@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>自助摇号页面</title>
+</head>
+<body>
+<div id="tab_val" >
+	<div id="main" style="height:1080px;"></div>
+</div>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts.min.js"></script>
+<script>
+	// 基于准备好的dom，初始化echarts实例
+	var myChart = echarts.init(document.getElementById('main'));
+	// 指定图表的配置项和数据
+	var schema = [
+		{name: 'redball1', index: 0, text: 'redball1'},
+		{name: 'redball2', index: 1, text: 'redball2'},
+		{name: 'redball3', index: 2, text: 'redball3'},
+		{name: 'redball4', index: 3, text: 'redball4'},
+		{name: 'redball5', index: 4, text: 'redball5'},
+		{name: 'redball6', index: 5, text: 'redball6'},
+		{name: 'blueball', index: 6, text: 'blueball'}
+	];
+	var lineStyle = {
+		normal: {
+			width: 1,
+			opacity: 0.5
+		}
+	};
+</script>
+<script>
+$(function(){
+	myChart.setOption({
+		backgroundColor: '#576000',
+		parallelAxis: [
+			{dim: 0, name: schema[0].text, inverse: true, max: 31, nameLocation: 'start'},
+			{dim: 1, name: schema[1].text},
+			{dim: 2, name: schema[2].text},
+			{dim: 3, name: schema[3].text},
+			{dim: 4, name: schema[4].text},
+			{dim: 5, name: schema[5].text},
+			{dim: 6, name: schema[6].text,type: 'category', data: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]},
+		],
+		visualMap: {
+			show: true,
+			min: 0,
+			max: 150,
+			dimension: 2,
+			inRange: {
+				color: ['#d94e5d','#eac736','#50a3ba'].reverse(),
+			}
+		},
+		parallel: {
+			left: '5%',
+			right: '18%',
+			bottom: 100,
+			parallelAxisDefault: {
+				type: 'value',
+				name: 'AQI指数',
+				nameLocation: 'end',
+				nameGap: 20,
+				nameTextStyle: {
+					color: '#fff',
+					fontSize: 12
+				},
+				axisLine: {
+					lineStyle: {
+						color: '#aaa'
+					}
+				},
+				axisTick: {
+					lineStyle: {
+						color: '#777'
+					}
+				},
+				splitLine: {
+					show: false
+				},
+				axisLabel: {
+					textStyle: {
+						color: '#fff'
+					}
+				}
+			}
+		},
+		series: []
+	});
+	getBalls(2,1,30);
+})
+function getBalls(value,pi,ps){
+	$.ajax({
+		type:"get",
+		url:"http://localhost:8082/doublecolorball/list",
+		data:{
+			"pageIndex":pi,
+			"pageSize":ps,
+			"orderBy":"id",
+			"sequnce":"desc"
+		},
+		dataType:"json",
+		success:function(resp){
+			var series = new Array();
+			var list = resp.list;
+			for(var i in list){
+				var ball;
+				if(value == 1){
+					ball = list[i];
+				}else{
+					ball = list[i]["doubleColorBallOrder"];
+				}
+				series.push({
+					name: ball["id"],
+					type: 'parallel',
+					lineStyle: lineStyle,
+					"data":[ball["redball1"],ball["redball2"],ball["redball3"],ball["redball4"],ball["redball5"],ball["redball6"],ball["blueball"]]
+				});
+			}
+			myChart.setOption({
+				series : series
+			})
+		},
+		error:function(){
+			console.log("error");
+		}
+	})
+}
+</script>
+</body>
+</html>

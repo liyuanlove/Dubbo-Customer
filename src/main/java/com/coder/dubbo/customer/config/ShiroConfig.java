@@ -64,7 +64,7 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
 
         // 登录成功后要跳转的链接
-        shiroFilterFactoryBean.setSuccessUrl("/Main");
+        shiroFilterFactoryBean.setSuccessUrl("/main");
 
         //自定义拦截器
         Map<String, Filter> filtersMap = new LinkedHashMap<>();
@@ -92,6 +92,7 @@ public class ShiroConfig {
         * */
         // 配置不会被拦截的链接 顺序判断
         // 不会被拦截的链接
+        /**
         filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/getsession", "anon");
@@ -118,7 +119,9 @@ public class ShiroConfig {
         //其余接口一律拦截
         //主要这行代码必须放在所有权限设置的最后，不然会导致所有 url 都被拦截
         filterChainDefinitionMap.put("/**", "authc");
+        */
 
+        filterChainDefinitionMap.put("/**", "anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }

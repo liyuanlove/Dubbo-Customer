@@ -1,11 +1,13 @@
 package com.coder.dubbo.customer.controller;
 
 import com.coder.springbootdomecollection.model.DoubleColorBall;
+import com.coder.springbootdomecollection.model.DoubleColorBallSearch;
 import com.coder.springbootdomecollection.service.DoubleColorBallService;
 import com.coder.util.ConstUtils;
 import com.coder.util.DateUtil;
 import com.coder.util.ExcelUtil;
 import com.coder.util.StringUtils;
+import com.github.pagehelper.PageInfo;
 import com.sun.corba.se.spi.orbutil.threadpool.Work;
 import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
 import org.apache.poi.ss.usermodel.Row;
@@ -33,6 +35,8 @@ public class DoubleColorBallController {
 
     @Autowired
     private DoubleColorBallService doubleColorBallService;
+
+    private DoubleColorBallSearch doubleColorBallSearch;
 
     private static final String RETURN_DOUBLE_COLOR_BALL = "returndoublecolorball.queue";
     private static final String INSERT_DOUBLE_COLOR_BALL = "insertdoublecolorball.queue";
@@ -90,5 +94,27 @@ public class DoubleColorBallController {
         }else{
             return "请上传Excel文件";
         }
+    }
+
+    @GetMapping("/list")
+    public PageInfo<DoubleColorBall> List(
+            @RequestParam("pageIndex") int pageIndex,
+            @RequestParam("pageSize") int pageSize,
+            @RequestParam("orderBy") String orderBy,
+            @RequestParam("sequnce") String sequnce){
+        System.out.println(orderBy);
+        System.out.println(sequnce);
+        if(doubleColorBallSearch == null){
+            doubleColorBallSearch = new DoubleColorBallSearch();
+        }
+        if(!StringUtils.isNullOrEmpty(orderBy)){
+            doubleColorBallSearch.setOrderBy(orderBy);
+        }
+        if(!StringUtils.isNullOrEmpty(sequnce)){
+            doubleColorBallSearch.setOrderSequnce(sequnce);
+        }
+        System.out.println(doubleColorBallSearch);
+        PageInfo<DoubleColorBall> balls = doubleColorBallService.listPage(pageIndex,pageSize,doubleColorBallSearch);
+        return balls;
     }
 }

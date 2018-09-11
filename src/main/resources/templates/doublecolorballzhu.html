@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>自助摇号页面</title>
+</head>
+<body>
+<div id="tab_val" >
+	<div id="main" style="height:1080px;"></div>
+</div>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdn.bootcss.com/echarts/4.1.0.rc2/echarts.min.js"></script>
+<script>
+	// 基于准备好的dom，初始化echarts实例
+	var myChart = echarts.init(document.getElementById('main'));
+	// 指定图表的配置项和数据
+	
+</script>
+<script>
+$(function(){
+	myChart.setOption(option = {
+		//顶部标题
+		title : {
+			// 大标题
+			text : '双色球',
+			// 小标题
+			subtext : '波动图'
+		},
+		// 提示框相关
+		tooltip : {
+			trigger : 'axis'
+		},
+		// 类目
+		//legend : {
+			//data : []
+		//},
+		//横坐标
+		xAxis : {
+			//  类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+			type : 'category',
+			boundaryGap : false,
+			data : ['红球1','红球2','红球3','红球4','红球5','红球6','蓝球']
+		},
+		yAxis : {
+			type : 'value',
+			axisLabel : {
+				//formatter : '{value} °C'
+			}
+		},
+		series : [ ]
+		//{
+			//name : '期号',
+			//type : 'line',
+			//data : [], // 号码	
+		//}
+	});
+	getBalls(2,1,30);
+})
+function getBalls(value,pi,ps){
+	$.ajax({
+		type:"get",
+		url:"http://localhost:8082/doublecolorball/list",
+		data:{
+			"pageIndex":pi,
+			"pageSize":ps,
+			"orderBy":"id",
+			"sequnce":"desc"
+		},
+		dataType:"json",
+		success:function(resp){
+			var legends = new Array();
+			var seriess = new Array();
+			var list = resp.list;
+			for(var i in list){
+				var ball;
+				if(value == 1){
+					ball = list[i];
+				}else{
+					ball = list[i]["doubleColorBallOrder"];
+				}
+				legends.push(ball["id"] + "");
+				seriess.push({
+					"name":ball["id"],
+					"type":"line",
+					"data":[ball["redball1"],ball["redball2"],ball["redball3"],ball["redball4"],ball["redball5"],ball["redball6"],ball["blueball"]]
+				})
+			}
+			myChart.setOption({
+				legend : {
+					data : legends
+				},
+				series : seriess
+			})
+		},
+		error:function(){
+			console.log("error");
+		}
+	})
+}
+</script>
+</body>
+</html>

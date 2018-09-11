@@ -71,7 +71,7 @@ layui.use('layer', function () {
             ErroAlert('Please Input Your Account !');
         } else if (pwd == '') {
             ErroAlert('Please Input Your Password');
-        } else if (code == '' || code.length != 4) {
+        } else if (code == '' || code.length != 4) {f
             ErroAlert('Please Input Code');
         } else {
             fullscreen();

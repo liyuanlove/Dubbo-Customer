@@ -1,11 +1,5 @@
 package com.coder.dubbo.customer.controller;
 
-
-import com.alibaba.fastjson.JSONObject;
-import com.coder.springbootdomecollection.model.SysUser;
-import com.coder.springbootdomecollection.model.User;
-import com.coder.util.MD5Encrypt;
-import com.coder.util.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -36,7 +30,7 @@ public class HomeController {
         Subject subject = SecurityUtils.getSubject();//获取当前用户对象
         if (!subject.isAuthenticated()) {
             // 把用户名和密码封装为UsernamePasswordToken 对象
-            UsernamePasswordToken token = new UsernamePasswordToken(name, MD5Encrypt.MD5Encode(MD5Encode(password)));
+            UsernamePasswordToken token = new UsernamePasswordToken(name, MD5Encode(MD5Encode(password)));
             token.setRememberMe(true);
             try {
                 // 执行登陆
