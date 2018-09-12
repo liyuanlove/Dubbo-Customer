@@ -114,7 +114,7 @@ public class DoubleColorBallController {
             doubleColorBallSearch.setOrderSequnce(sequnce);
         }
         System.out.println(doubleColorBallSearch);
-        PageInfo<DoubleColorBall> balls = doubleColorBallService.listPage(pageIndex,pageSize,doubleColorBallSearch);
+        PageInfo<DoubleColorBall> balls = doubleColorBallService.selectPage(pageIndex,pageSize,doubleColorBallSearch);
         return balls;
     }
 }
