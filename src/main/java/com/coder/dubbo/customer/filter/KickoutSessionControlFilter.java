@@ -109,12 +109,11 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
             Serializable kickoutSessionId = null;
             if (kickoutAfter) {
                 //如果踢出之前登录的人
-                deque.removeFirst();
+                kickoutSessionId = deque.removeFirst();
             } else {
                 //否则踢出后登录的人
                 kickoutSessionId = deque.removeLast();
             }
-            cache.put(username, deque);
             try {
                 //获取被踢出的sessionId的session对象
                 Session kickoutSession = sessionManager.getSession(new DefaultSessionKey(kickoutSessionId));
@@ -125,6 +124,7 @@ public class KickoutSessionControlFilter extends AccessControlFilter {
             } catch (Exception e) {
                 //ignore exception
             }
+            cache.put(username, deque);
         }
 
         //如果被踢出了，直接退出，重定向到踢出后的地址

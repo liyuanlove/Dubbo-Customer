@@ -1,8 +1,8 @@
 package com.coder.dubbo.customer.controller;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -36,6 +36,15 @@ public class HomeController {
                 // 执行登陆
                 subject.login(token);
                 return "/main";
+            } catch ( UnknownAccountException uae ) {
+                //username wasn't in the system, show them an error message?
+                System.out.println("账号不存在");
+            } catch ( IncorrectCredentialsException ice ) {
+                //password didn't match, try again?
+                System.out.println("密码错误");
+            } catch ( LockedAccountException lae ) {
+                //account for that username is locked - can't login.  Show them a message?
+                System.out.println("账号被锁");
             } catch (AuthenticationException ae) {
                 System.out.println("登录失败--->" + ae.getMessage());
             }
