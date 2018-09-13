@@ -7,6 +7,7 @@ import com.coder.springbootdomecollection.service.MailService;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.messaging.MessagingException;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import java.io.Serializable;
 
 @RestController
 @RequestMapping("/Mail")
+@Scope("prototype")
 public class MailController {
 
     @Autowired

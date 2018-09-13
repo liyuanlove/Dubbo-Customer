@@ -1,6 +1,7 @@
 package com.coder.dubbo.customer.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 import com.coder.springbootdomecollection.service.*;
 
@@ -8,6 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @RestController
 @RequestMapping(value = "/Zookeeper")
+@Scope("prototype")
 public class ZookeeperController {
 
     @Autowired
