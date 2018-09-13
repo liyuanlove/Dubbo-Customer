@@ -20,8 +20,17 @@ import static com.coder.util.MD5Encrypt.MD5Encode;
 @Scope("prototype")
 public class HomeController {
 
+    @GetMapping
+    public String Index(){
+        return "index";
+    }
+
     @GetMapping("/login")
     public String login(){
+        Subject subject = SecurityUtils.getSubject();//获取当前用户对象
+        if(subject.isAuthenticated()){
+            return "redirect:/main";
+        }
         return "login";
     }
 
@@ -35,26 +44,27 @@ public class HomeController {
             try {
                 // 执行登陆
                 subject.login(token);
-                return "/main";
+                return "redirect:/main";
             } catch ( UnknownAccountException uae ) {
                 //username wasn't in the system, show them an error message?
                 System.out.println("账号不存在");
             } catch ( IncorrectCredentialsException ice ) {
                 //password didn't match, try again?
                 System.out.println("密码错误");
-            } catch ( LockedAccountException lae ) {
+            } catch (LockedAccountException lae ) {
                 //account for that username is locked - can't login.  Show them a message?
                 System.out.println("账号被锁");
             } catch (AuthenticationException ae) {
                 System.out.println("登录失败--->" + ae.getMessage());
             }
+            return "login";
         }
-        return "login";
+        return "redirect:/main";
     }
 
-    @GetMapping
-    public String Index(){
-        return "index";
+    @GetMapping("/main")
+    public String main(){
+        return "main";
     }
 
     @GetMapping("/getsession")
@@ -68,10 +78,6 @@ public class HomeController {
         return o + "<br/>当前端口=" + req.getLocalPort() +  " sessionId=" + req.getSession().getId() +"<br/>";
     }
 
-    @GetMapping("/main")
-    public String main(){
-        return "main";
-    }
 
     @GetMapping("/lovedongqing")
     public String loveDongQing(){

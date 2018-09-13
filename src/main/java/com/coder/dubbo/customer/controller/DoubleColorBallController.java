@@ -1,29 +1,21 @@
 package com.coder.dubbo.customer.controller;
 
 import com.coder.springbootdomecollection.model.DoubleColorBall;
-import com.coder.springbootdomecollection.model.DoubleColorBallSearch;
 import com.coder.springbootdomecollection.service.DoubleColorBallService;
 import com.coder.util.ConstUtils;
 import com.coder.util.DateUtil;
 import com.coder.util.ExcelUtil;
 import com.coder.util.StringUtils;
 import com.github.pagehelper.PageInfo;
-import com.sun.corba.se.spi.orbutil.threadpool.Work;
-import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.jsoup.Jsoup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.jms.annotation.JmsListener;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
-import org.jsoup.nodes.Document;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,7 +28,7 @@ public class DoubleColorBallController {
     @Autowired
     private DoubleColorBallService doubleColorBallService;
 
-    private DoubleColorBallSearch doubleColorBallSearch;
+    private DoubleColorBall doubleColorBall;
 
     private static final String RETURN_DOUBLE_COLOR_BALL = "returndoublecolorball.queue";
     private static final String INSERT_DOUBLE_COLOR_BALL = "insertdoublecolorball.queue";
@@ -102,16 +94,16 @@ public class DoubleColorBallController {
             @RequestParam("pageSize") int pageSize,
             @RequestParam("orderBy") String orderBy,
             @RequestParam("sequnce") String sequnce){
-        if(doubleColorBallSearch == null){
-            doubleColorBallSearch = new DoubleColorBallSearch();
+        if(doubleColorBall == null){
+            doubleColorBall = new DoubleColorBall();
         }
         if(!StringUtils.isNullOrEmpty(orderBy)){
-            doubleColorBallSearch.setOrderBy(orderBy);
+            doubleColorBall.setOrderBy(orderBy);
         }
         if(!StringUtils.isNullOrEmpty(sequnce)){
-            doubleColorBallSearch.setOrderSequnce(sequnce);
+            doubleColorBall.setOrderSequnce(sequnce);
         }
-        PageInfo<DoubleColorBall> balls = doubleColorBallService.selectPage(pageIndex,pageSize,doubleColorBallSearch);
+        PageInfo<DoubleColorBall> balls = doubleColorBallService.selectPage(pageIndex,pageSize,doubleColorBall);
         return balls;
     }
 }

@@ -52,13 +52,13 @@ public class ShiroRealm extends AuthorizingRealm {
         // 从数据库中获取还用户名对应的user
         SysUser sysUser = new SysUser();
         sysUser.setName(token.getUsername());
-        sysUser = sysUserService.selectByProperty(sysUser);
-        if(sysUser == null) {
+        SysUser thisUser = sysUserService.selectByProperty(sysUser);
+        if(thisUser == null) {
             throw new UnknownAccountException();//没找到帐号
         }
         return new SimpleAuthenticationInfo(
-                sysUser, // 用户实体 这里放实体，下面的方法可以直接取出实体，从而得到角色和权限，如果这里添加的是
-                sysUser.getPassword(),// 密码
+                thisUser, // 用户实体 这里放实体，下面的方法可以直接取出实体，从而得到角色和权限，如果这里添加的是
+                thisUser.getPassword(),// 密码
                 getName()); // realm name
 
     }

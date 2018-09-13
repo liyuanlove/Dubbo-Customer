@@ -90,19 +90,13 @@ public class ShiroConfig {
         * */
         // 配置不会被拦截的链接 顺序判断
         // 不会被拦截的链接
-        /**
         filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/login", "anon");
-        filterChainDefinitionMap.put("/getsession", "anon");
-        filterChainDefinitionMap.put("/websocket", "anon");
-        filterChainDefinitionMap.put("/lovedongqing", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/css/**", "anon");
         filterChainDefinitionMap.put("/img/**", "anon");
         filterChainDefinitionMap.put("/fonts/**", "anon");
         filterChainDefinitionMap.put("/favicon.ico", "anon");
-        filterChainDefinitionMap.put("/doublecolorball", "anon");
-        filterChainDefinitionMap.put("/doublecolorball/**", "anon");
 
         //注意过滤器配置顺序 不能颠倒
         //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了，登出后跳转配置的loginUrl
@@ -117,9 +111,7 @@ public class ShiroConfig {
         //其余接口一律拦截
         //主要这行代码必须放在所有权限设置的最后，不然会导致所有 url 都被拦截
         filterChainDefinitionMap.put("/**", "authc");
-        */
 
-        filterChainDefinitionMap.put("/**", "anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
@@ -156,7 +148,9 @@ public class ShiroConfig {
      */
     @Bean(name="credentialsMatcher")
     public CredentialsMatcher credentialsMatcher() {
-        return new CredentialsMatcher();
+        CredentialsMatcher credentialsMatcher = new CredentialsMatcher();
+        credentialsMatcher.setStoredCredentialsHexEncoded(true);
+        return credentialsMatcher;
     }
 
 //    /**
