@@ -102,8 +102,6 @@ public class DoubleColorBallController {
             @RequestParam("pageSize") int pageSize,
             @RequestParam("orderBy") String orderBy,
             @RequestParam("sequnce") String sequnce){
-        System.out.println(orderBy);
-        System.out.println(sequnce);
         if(doubleColorBallSearch == null){
             doubleColorBallSearch = new DoubleColorBallSearch();
         }
@@ -113,7 +111,6 @@ public class DoubleColorBallController {
         if(!StringUtils.isNullOrEmpty(sequnce)){
             doubleColorBallSearch.setOrderSequnce(sequnce);
         }
-        System.out.println(doubleColorBallSearch);
         PageInfo<DoubleColorBall> balls = doubleColorBallService.selectPage(pageIndex,pageSize,doubleColorBallSearch);
         return balls;
     }

@@ -33,8 +33,6 @@ import javax.servlet.Filter;
 public class ShiroConfig {
 
     public ShiroConfig(){
-        System.out.println("-------------------------");
-        System.out.println(this.host);
     }
     @Value("${spring.redis.host}")
     private String host;

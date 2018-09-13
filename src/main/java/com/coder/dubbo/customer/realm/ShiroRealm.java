@@ -44,6 +44,7 @@ public class ShiroRealm extends AuthorizingRealm {
     /**
      * 验证用户身份，
      * 也就是说验证用户输入的账号和密码是否正确
+     * Authentication 认证
      * */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
@@ -62,6 +63,11 @@ public class ShiroRealm extends AuthorizingRealm {
 
     }
 
+    /**
+     * Authorization 授权
+     * @param principalCollection
+     * @return
+     */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         System.out.println("权限配置-->ShiroRealm.doGetAuthorizationInfo()");

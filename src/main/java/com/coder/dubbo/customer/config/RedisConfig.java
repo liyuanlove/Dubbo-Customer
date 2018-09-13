@@ -16,8 +16,6 @@ import org.springframework.session.data.redis.config.annotation.web.http.EnableR
 public class RedisConfig {
 
     public RedisConfig(){
-        System.out.println("===============================================================");
-        System.out.println(this.host);
     }
 
     @Value("${spring.redis.host}")
