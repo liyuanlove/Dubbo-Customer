@@ -4,6 +4,13 @@
     <title>main</title>
 </head>
 <body>
-    Main
+<table border="1">
+    <tr>
+        <th>用户名</th>
+    </tr>
+    <tr  th:each="menu,menuStat : ${menus}">
+        <td th:text="${menu.name}">Onions</td>
+    </tr>
+</table>
 </body>
 </html>

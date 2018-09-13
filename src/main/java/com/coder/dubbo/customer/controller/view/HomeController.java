@@ -1,11 +1,13 @@
-package com.coder.dubbo.customer.controller;
+package com.coder.dubbo.customer.controller.view;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
+import com.coder.dubbo.customer.util.Current;
+import com.coder.springbootdomecollection.model.SysUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,7 +65,8 @@ public class HomeController {
     }
 
     @GetMapping("/main")
-    public String main(){
+    public String main(Model model){
+        model.addAttribute("menu",Current.user());
         return "main";
     }
 
