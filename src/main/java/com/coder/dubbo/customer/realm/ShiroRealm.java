@@ -49,7 +49,9 @@ public class ShiroRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken token = (UsernamePasswordToken)authenticationToken;
         // 从数据库中获取还用户名对应的user
-        SysUser sysUser = sysUserService.selectByUserName(token.getUsername());
+        SysUser sysUser = new SysUser();
+        sysUser.setName(token.getUsername());
+        sysUser = sysUserService.selectByProperty(sysUser);
         if(sysUser == null) {
             throw new UnknownAccountException();//没找到帐号
         }
