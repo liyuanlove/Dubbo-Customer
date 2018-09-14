@@ -4,7 +4,8 @@
 <body>
     <div th:fragment="footer">
         <!--/* jquery */-->
-        <script src='assets/javascripts/jquery/jquery.min.js' type='text/javascript' th:src="@{'assets/javascripts/jquery/jquery.min.js'}"></script>
+        <script src='assets/javascripts/jquery/jquery.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js'}"></script>
+
         <!--/* jquery mobile events (for touch and slide) */-->
         <script src='assets/javascripts/plugins/mobile_events/jquery.mobile-events.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/mobile_events/jquery.mobile-events.min.js'}"></script>
         <!--/* jquery migrate (for compatibility with new jquery) */-->
@@ -15,7 +16,7 @@
         <!--/* jquery ui */-->
         <script src='assets/javascripts/jquery_ui/jquery-ui.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js'}"></script>
         <!--/* bootstrap */-->
-        <script src='assets/javascripts/bootstrap/bootstrap.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js'}"></script>
+        <script src='assets/javascripts/bootstrap/bootstrap.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js'}"></script>
         <script src='assets/javascripts/plugins/flot/excanvas.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/canvasjs/1.7.0/excanvas.js'}"></script>
         <!--/* sparklines */-->
         <script src='assets/javascripts/plugins/sparklines/jquery.sparkline.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/jquery-sparklines/2.1.2/jquery.sparkline.min.js'}"></script>
@@ -82,9 +83,7 @@
         <!--/* bootbox */-->
         <script src='assets/javascripts/plugins/bootbox/bootbox.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js'}"></script>
         <!--/* inplace editing */-->
-        <!--/*
-                    <script src='assets/javascripts/plugins/xeditable/bootstrap-editable.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/x-editable/1.4.4/bootstrap-editable/js/bootstrap-editable.min.js'}"></script>
-                */-->
+
 
 
 
@@ -112,7 +111,11 @@
         <script src='assets/javascripts/demo/jquery.mockjax.js' type='text/javascript' th:src="@{'assets/javascripts/demo/jquery.mockjax.js'}"></script>
         <script src='assets/javascripts/demo/inplace_editing.js' type='text/javascript' th:src="@{'assets/javascripts/demo/inplace_editing.js'}"></script>
         <script src='assets/javascripts/demo/charts.js' type='text/javascript' th:src="@{'assets/javascripts/demo/charts.js'}"></script>
-        <script src='assets/javascripts/plugins/xeditable/bootstrap-editable.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/xeditable/bootstrap-editable.min.js'}"></script>
+        <!--/*
+
+                    <script src='assets/javascripts/plugins/xeditable/bootstrap-editable.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/xeditable/bootstrap-editable.min.js'}"></script>
+                */-->
+        <script src='assets/javascripts/plugins/xeditable/bootstrap-editable.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/x-editable/1.4.4/bootstrap-editable/js/bootstrap-editable.min.js'}"></script>
         <script src='assets/javascripts/plugins/xeditable/wysihtml5.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/xeditable/wysihtml5.js'}"></script>
         <script src='assets/javascripts/demo/demo.js' type='text/javascript' th:src="@{'assets/javascripts/demo/demo.js'}"></script>
         <script src='assets/javascripts/nav.js' type='text/javascript' th:src="@{'assets/javascripts/nav.js'}"></script>
