@@ -2,6 +2,7 @@ package com.coder.dubbo.customer.config;
 
 import com.coder.dubbo.customer.util.Current;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -25,6 +26,16 @@ public class AopConfig {
             for(Object obj:jp.getArgs()){
                 if(obj instanceof Model){
                     ((Model) obj).addAttribute("menus",Current.menus());
+                }
+            }
+        }
+    }
+    @AfterReturning(pointcut="execution(* com.coder..controller.view.*.*(..,org.springframework.ui.Model,..)) ",returning="obj")
+    public void afterReturningViewController(JoinPoint jp,Object obj){
+        if(obj != null && obj instanceof String){
+            for(Object model:jp.getArgs()){
+                if(model instanceof Model){
+                    ((Model) model).addAttribute("thismenu",obj);
                 }
             }
         }
