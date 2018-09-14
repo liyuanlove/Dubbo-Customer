@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 @Configuration
 public class AopConfig {
 
-    @Pointcut("execution(* com.coder..view.*.*(org.springframework.ui.Model))")
+    @Pointcut("execution(* com.coder..controller.view.*.*(..,org.springframework.ui.Model,..))")
     public void executeViewController(){ }
 
     /**
@@ -25,7 +25,7 @@ public class AopConfig {
         if(jp != null){
             for(Object obj:jp.getArgs()){
                 if(obj instanceof Model){
-                    ((Model) obj).addAttribute("menus",Current.());
+                    ((Model) obj).addAttribute("menus",Current.menus());
                 }
             }
         }

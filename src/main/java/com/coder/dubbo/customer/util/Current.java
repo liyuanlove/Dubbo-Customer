@@ -19,13 +19,11 @@ import java.util.Set;
  */
 public final class Current {
 
-    public static SysUser user;
-
-    public static String currentSessionID(){
+    public static String siessionId(){
         return SecurityUtils.getSubject().getSession().getId().toString();
     }
 
-    public static SysUser currentSysUser(){
+    public static SysUser user(){
         try {
             return (SysUser) SecurityUtils.getSubject().getPrincipal();
         }catch (Exception e){
@@ -33,20 +31,8 @@ public final class Current {
         }
     }
 
-    public static Set<SysMenu> Menu(){
-        Set<SysMenu> menus = new HashSet<>();
-        SysUser sysUser = currentSysUser();
-        List<SysRole> roles = sysUser.getRoleList();
-        if(!CollectionUtils.isNullOrEmptyStrict(roles)){
-            for(SysRole role : roles){
-                List<SysMenu> roleMenus = role.getSysMenuList();
-                if(!CollectionUtils.isNullOrEmptyStrict(roleMenus)){
-                    for(SysMenu sysMenu : roleMenus){
-                        menus.add(sysMenu);
-                    }
-                }
-            }
-        }
+    public static List<SysMenu> menus(){
+        List<SysMenu> menus = user().getMenuList();
         return menus;
     }
 }

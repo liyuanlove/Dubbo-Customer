@@ -23,7 +23,7 @@ import static com.coder.util.MD5Encrypt.MD5Encode;
 public class HomeController {
 
     @GetMapping
-    public String Index(){
+    public String index(){
         return "index";
     }
 
@@ -66,7 +66,6 @@ public class HomeController {
 
     @GetMapping("/main")
     public String main(Model model){
-        model.addAttribute("menu",Current.user());
         return "main";
     }
 
