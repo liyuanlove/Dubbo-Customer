@@ -1,0 +1,126 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head></head>
+<body>
+    <div th:fragment="footer">
+        <!--/* jquery */-->
+        <script src='assets/javascripts/jquery/jquery.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js'}"></script>
+
+        <!--/* jquery mobile events (for touch and slide) */-->
+        <script src='assets/javascripts/plugins/mobile_events/jquery.mobile-events.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/mobile_events/jquery.mobile-events.min.js'}"></script>
+        <!--/* jquery migrate (for compatibility with new jquery) */-->
+        <!--/*
+            <script src='assets/javascripts/jquery/jquery-migrate.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/jquery-migrate/3.0.1/jquery-migrate.min.js'}"></script>
+        */-->
+        <script src='assets/javascripts/jquery/jquery-migrate.min.js' type='text/javascript' th:src="@{'assets/javascripts/jquery/jquery-migrate.min.js'}"></script>
+        <!--/* jquery ui */-->
+        <script src='assets/javascripts/jquery_ui/jquery-ui.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js'}"></script>
+        <!--/* bootstrap */-->
+        <script src='assets/javascripts/bootstrap/bootstrap.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/bootstrap/2.3.2/js/bootstrap.min.js'}"></script>
+        <script src='assets/javascripts/plugins/flot/excanvas.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/canvasjs/1.7.0/excanvas.js'}"></script>
+        <!--/* sparklines */-->
+        <script src='assets/javascripts/plugins/sparklines/jquery.sparkline.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/jquery-sparklines/2.1.2/jquery.sparkline.min.js'}"></script>
+        <!--/* flot charts */-->
+        <script src='assets/javascripts/plugins/flot/flot.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/flot/0.8.3/jquery.flot.min.js'}"></script>
+        <script src='assets/javascripts/plugins/flot/flot.resize.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/flot/0.8.3/jquery.flot.resize.min.js'}"></script>
+        <script src='assets/javascripts/plugins/flot/flot.pie.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/flot/0.8.3/jquery.flot.pie.min.js'}"></script>
+        <!--/* bootstrap switch */-->
+        <script src='assets/javascripts/plugins/bootstrap_switch/bootstrapSwitch.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/bootstrap-switch/1.3/bootstrapSwitch.min.js'}"></script>
+        <!--/* fullcalendar */-->
+        <!--/*
+            <script src='assets/javascripts/plugins/fullcalendar/fullcalendar.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/fullcalendar/3.9.0/fullcalendar.min.js'}"></script>
+        */-->
+        <script src='assets/javascripts/plugins/fullcalendar/fullcalendar.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/fullcalendar/fullcalendar.min.js'}"></script>
+
+        <!--/* datatables */-->
+        <script src='assets/javascripts/plugins/datatables/jquery.dataTables.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/datatables/1.10.16/js/jquery.dataTables.min.js'}"></script>
+        <script src='assets/javascripts/plugins/datatables/jquery.dataTables.columnFilter.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/datatables/jquery.dataTables.columnFilter.js'}"></script>
+        <!--/* wysihtml5 */-->
+        <script src='assets/javascripts/plugins/common/wysihtml5.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/wysihtml5/0.3.0/wysihtml5.min.js'}"></script>
+        <script src='assets/javascripts/plugins/common/bootstrap-wysihtml5.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/common/bootstrap-wysihtml5.js'}"></script>
+        <!--/* select2 */-->
+        <script src='assets/javascripts/plugins/select2/select2.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/select2/4.0.5/js/select2.js'}"></script>
+        <!--/* color picker */-->
+        <script src='assets/javascripts/plugins/bootstrap_colorpicker/bootstrap-colorpicker.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/bootstrap-colorpicker/2.5.2/js/bootstrap-colorpicker.min.js'}"></script>
+        <!--/* mention */-->
+        <script src='assets/javascripts/plugins/mention/mention.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/mention/mention.min.js'}"></script>
+        <!--/* input mask */-->
+        <script src='assets/javascripts/plugins/input_mask/bootstrap-inputmask.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/input_mask/bootstrap-inputmask.min.js'}"></script>
+        <!--/* fileinput */-->
+        <script src='assets/javascripts/plugins/fileinput/bootstrap-fileinput.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/bootstrap-fileinput/4.4.8/js/fileinput.min.js'}"></script>
+        <!--/* modernizr */-->
+        <script src='assets/javascripts/plugins/modernizr/modernizr.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/modernizr/2.8.3/modernizr.min.js'}"></script>
+        <!--/* retina */-->
+        <script src='assets/javascripts/plugins/retina/retina.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/retina.js/2.1.3/retina.min.js'}"></script>
+        <!--/* fileupload */-->
+        <script src='assets/javascripts/plugins/fileupload/tmpl.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/fileupload/tmpl.min.js'}"></script>
+        <script src='assets/javascripts/plugins/fileupload/load-image.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/fileupload/load-image.min.js'}"></script>
+        <script src='assets/javascripts/plugins/fileupload/canvas-to-blob.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/fileupload/canvas-to-blob.min.js'}"></script>
+        <script src='assets/javascripts/plugins/fileupload/jquery.iframe-transport.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/fileupload/jquery.iframe-transport.min.js'}"></script>
+        <script src='assets/javascripts/plugins/fileupload/jquery.fileupload.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/fileupload/jquery.fileupload.min.js'}"></script>
+        <script src='assets/javascripts/plugins/fileupload/jquery.fileupload-fp.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/fileupload/jquery.fileupload-fp.min.js'}"></script>
+        <script src='assets/javascripts/plugins/fileupload/jquery.fileupload-ui.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/fileupload/jquery.fileupload-ui.min.js'}"></script>
+        <script src='assets/javascripts/plugins/fileupload/jquery.fileupload-init.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/fileupload/jquery.fileupload-init.js'}"></script>
+        <!--/* timeago */-->
+        <script src='assets/javascripts/plugins/timeago/jquery.timeago.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/jquery-timeago/1.6.3/jquery.timeago.min.js'}"></script>
+        <!--/* slimscroll */-->
+        <script src='assets/javascripts/plugins/slimscroll/jquery.slimscroll.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/jQuery-slimScroll/1.3.8/jquery.slimscroll.min.js'}"></script>
+        <!--/* autosize (for textareas) */-->
+        <script src='assets/javascripts/plugins/autosize/jquery.autosize-min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/autosize.js/1.18.18/jquery.autosize.min.js'}"></script>
+        <!--/* charCount */-->
+        <script src='assets/javascripts/plugins/charCount/charCount.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/charCount/charCount.js'}"></script>
+        <!--/* validate */-->
+        <script src='assets/javascripts/plugins/validate/jquery.validate.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/jquery-validate/1.11.1/jquery.validate.min.js'}"></script>
+        <script src='assets/javascripts/plugins/validate/additional-methods.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/jquery-validate/1.11.1/additional-methods.min.js'}"></script>
+        <!--/* naked password */-->
+        <script src='assets/javascripts/plugins/naked_password/naked_password-0.2.4.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/naked_password/naked_password-0.2.4.min.js'}"></script>
+        <!--/* nestable */-->
+        <script src='assets/javascripts/plugins/nestable/jquery.nestable.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/Nestable/2012-10-15/jquery.nestable.min.js'}"></script>
+        <!--/* tabdrop */-->
+        <script src='assets/javascripts/plugins/tabdrop/bootstrap-tabdrop.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/tabdrop/bootstrap-tabdrop.js'}"></script>
+        <!--/* jgrowl */-->
+        <script src='assets/javascripts/plugins/jgrowl/jquery.jgrowl.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/jquery-jgrowl/1.4.6/jquery.jgrowl.min.js'}"></script>
+        <!--/* bootbox */-->
+        <script src='assets/javascripts/plugins/bootbox/bootbox.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js'}"></script>
+        <!--/* inplace editing */-->
+
+
+
+
+
+        <!--/* ckeditor */-->
+        <script src='assets/javascripts/plugins/ckeditor/ckeditor.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/ckeditor/4.9.2/ckeditor.js'}"></script>
+        <!--/* filetrees */-->
+        <script src='assets/javascripts/plugins/dynatree/jquery.dynatree.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/dynatree/jquery.dynatree.min.js'}"></script>
+        <!--/* datetime picker */-->
+        <script src='assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/bootstrap_datetimepicker/bootstrap-datetimepicker.js'}"></script>
+        <!--/* daterange picker */-->
+        <script src='assets/javascripts/plugins/bootstrap_daterangepicker/moment.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/bootstrap-daterangepicker/3.0.3/moment.min.js'}"></script>
+        <script src='assets/javascripts/plugins/bootstrap_daterangepicker/bootstrap-daterangepicker.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/bootstrap-daterangepicker/3.0.3/daterangepicker.min.js'}"></script>
+        <!--/* max length */-->
+        <script src='assets/javascripts/plugins/bootstrap_maxlength/bootstrap-maxlength.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/bootstrap-maxlength/1.7.0/bootstrap-maxlength.min.js'}"></script>
+        <!--/* dropdown hover */-->
+        <script src='assets/javascripts/plugins/bootstrap_hover_dropdown/twitter-bootstrap-hover-dropdown.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/bootstrap_hover_dropdown/twitter-bootstrap-hover-dropdown.min.js'}"></script>
+        <!--/* slider nav (address book) */-->
+        <script src='assets/javascripts/plugins/slider_nav/slidernav-min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/slider_nav/slidernav-min.js'}"></script>
+        <!--/* fuelux */-->
+        <script src='assets/javascripts/plugins/fuelux/wizard.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/fuelux/wizard.js'}"></script>
+        <!--/* flatty theme */-->
+
+        <!--/* demo */-->
+        <script src='assets/javascripts/demo/jquery.mockjax.js' type='text/javascript' th:src="@{'assets/javascripts/demo/jquery.mockjax.js'}"></script>
+        <script src='assets/javascripts/demo/inplace_editing.js' type='text/javascript' th:src="@{'assets/javascripts/demo/inplace_editing.js'}"></script>
+        <script src='assets/javascripts/demo/charts.js' type='text/javascript' th:src="@{'assets/javascripts/demo/charts.js'}"></script>
+        <!--/*
+
+                    <script src='assets/javascripts/plugins/xeditable/bootstrap-editable.min.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/xeditable/bootstrap-editable.min.js'}"></script>
+                */-->
+        <script src='assets/javascripts/plugins/xeditable/bootstrap-editable.min.js' type='text/javascript' th:src="@{'https://cdn.bootcss.com/x-editable/1.4.4/bootstrap-editable/js/bootstrap-editable.min.js'}"></script>
+        <script src='assets/javascripts/plugins/xeditable/wysihtml5.js' type='text/javascript' th:src="@{'assets/javascripts/plugins/xeditable/wysihtml5.js'}"></script>
+        <script src='assets/javascripts/demo/demo.js' type='text/javascript' th:src="@{'assets/javascripts/demo/demo.js'}"></script>
+        <script src='assets/javascripts/nav.js' type='text/javascript' th:src="@{'assets/javascripts/nav.js'}"></script>
+        <script src='assets/javascripts/tables.js' type='text/javascript' th:src="@{'assets/javascripts/tables.js'}"></script>
+        <script src='assets/javascripts/theme.js' type='text/javascript' th:src="@{'assets/javascripts/theme.js'}"></script>
+    </div>
+</body>
+</html>
