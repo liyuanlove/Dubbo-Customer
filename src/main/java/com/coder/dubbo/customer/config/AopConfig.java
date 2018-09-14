@@ -21,7 +21,6 @@ public class AopConfig {
      */
     @Before("executeViewController()")
     public void beforeViewController(JoinPoint jp){
-        System.out.println("前置拦截器");
         if(jp != null){
             for(Object obj:jp.getArgs()){
                 if(obj instanceof Model){
