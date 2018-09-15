@@ -8,6 +8,10 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.ui.Model;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Aspect
 @Configuration
@@ -16,27 +20,13 @@ public class AopConfig {
     @Pointcut("execution(* com.coder..controller.view.*.*(..,org.springframework.ui.Model,..))")
     public void executeViewController(){ }
 
-    /**
-     * 在切入点之前
-     * @param jp
-     */
-    @Before("executeViewController()")
-    public void beforeViewController(JoinPoint jp){
-        if(jp != null){
-            for(Object obj:jp.getArgs()){
-                if(obj instanceof Model){
-                    ((Model) obj).addAttribute("menus",Current.menus());
-                }
-            }
-        }
-    }
-    @AfterReturning(pointcut="execution(* com.coder..controller.view.*.*(..,org.springframework.ui.Model,..)) ",returning="obj")
-    public void afterReturningViewController(JoinPoint jp,Object obj){
-        if(obj != null && obj instanceof String){
-            for(Object model:jp.getArgs()){
-                if(model instanceof Model){
-                    ((Model) model).addAttribute("thismenu",obj);
-                }
+    @AfterReturning(pointcut="execution(* com.coder..controller.view.*.*(..,org.springframework.ui.Model,..))")
+    public void afterReturningViewController(JoinPoint jp){
+        for(Object obj:jp.getArgs()){
+            if(obj instanceof Model){
+                HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+                ((Model) obj).addAttribute("menus",Current.menus());
+                ((Model) obj).addAttribute("thismenu",request.getRequestURI());
             }
         }
     }

@@ -1,7 +1,5 @@
 package com.coder.dubbo.customer.controller.view;
 
-import com.coder.dubbo.customer.util.Current;
-import com.coder.springbootdomecollection.model.SysUser;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;

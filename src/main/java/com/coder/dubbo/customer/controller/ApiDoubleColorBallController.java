@@ -21,9 +21,9 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/doublecolorball")
+@RequestMapping("/api/doublecolorball")
 @Scope("prototype")
-public class DoubleColorBallController {
+public class ApiDoubleColorBallController {
 
     @Autowired
     private DoubleColorBallService doubleColorBallService;
@@ -39,11 +39,6 @@ public class DoubleColorBallController {
         System.out.println(text);
     }
 
-    @GetMapping
-    public ModelAndView index() {
-        ModelAndView mv = new ModelAndView("doublecolorball");
-        return mv;
-    }
 
     @PostMapping("/excel")
     public String addDoubleColorBall(@RequestParam("file") MultipartFile file){
