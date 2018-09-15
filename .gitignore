@@ -32,3 +32,4 @@
 out
 gen
 src/main/resources/static/img/
+!/src/main/resources/static/img/
