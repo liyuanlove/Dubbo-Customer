@@ -22,7 +22,7 @@ public class HomeController {
 
     @GetMapping
     public String index(){
-        return "index";
+        return "home/index";
     }
 
     @GetMapping("/login")
@@ -31,7 +31,7 @@ public class HomeController {
         if(subject.isAuthenticated()){
             return "redirect:/main";
         }
-        return "login";
+        return "home/login";
     }
 
     @PostMapping("/login")
@@ -57,14 +57,14 @@ public class HomeController {
             } catch (AuthenticationException ae) {
                 System.out.println("登录失败--->" + ae.getMessage());
             }
-            return "login";
+            return "home/login";
         }
         return "redirect:/main";
     }
 
     @GetMapping("/main")
     public String main(Model model){
-        return "main";
+        return "home/main";
     }
 
     @GetMapping("/getsession")

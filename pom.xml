@@ -148,6 +148,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+        <!-- 如果想用 thymeleaf layout_bak 布局页面，需要引入如下引用 -->
+        <dependency>
+            <groupId>nz.net.ultraq.thymeleaf</groupId>
+            <artifactId>thymeleaf-layout-dialect</artifactId>
+            <version>2.2.2</version>
+        </dependency>
 
         <!-- 如果再properties文件中配置Legacy HTML5，则需要如下引用，否则不用-->
         <dependency>

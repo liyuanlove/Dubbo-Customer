@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="zh-CN">
+<head>
+    <head th:include="home/header::header"></head>
+    <title>wujunlong.com</title>
+    <meta name="description" content="吴俊龙简历">
+    <!--/* Theme CSS */-->
+    <link rel="stylesheet" href="/css/wjl_styles.css" th:href="@{'/css/wjl_styles.css'}">
+</head>
+<body>
+<header class="header">
+    <div class="top-bar container-fluid">
+        <div class="actions">
+            <a class="btn hidden-xs" th:href="@{'mailto:735626035@qq.com'}"><i class="fa fa-paper-plane" aria-hidden="true"></i>邮箱</a>
+            <a class="btn" th:href="@{'#'}"><i class="fa fa-download" aria-hidden="true"></i>简历下载</a>
+        </div>
+        <ul class="social list-inline">
+            <li>
+                <a th:href="@{'https://github.com/wjlonger'}" th:target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+            </li>
+            <li>
+                <a th:href="@{'http://sighttp.qq.com/msgrd?v=1&uin=735626035'}" th:target="_blank"><i class="fa fa-qq" aria-hidden="true"></i></a>
+            </li>
+            <li>
+                <a th:href="@{'javascript:void(0);'}" class="wechat" data-toggle="popover" data-placement="bottom"><i class="fa fa-weixin" aria-hidden="true"></i></a>
+            </li>
+            <li>
+                <a th:href="@{'/login'}" th:target="_blank"><i class="fa fa-align-right" aria-hidden="true"></i></a>
+            </li>
+        </ul>
+    </div>
+    <div class="intro">
+        <div class="container text-center">
+            <img class="profile-image img-circle" src="/img/me.jpg" th:src="@{'/img/me.jpg'}" alt="吴俊龙">
+            <h1 class="name">吴俊龙</h1>
+            <div class="title">Java & .Net Developer</div>
+            <div class="profile">
+                <p><strong>沉着勇敢，坚韧不拔。</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="contact-info">
+        <div class="container text-center">
+            <ul class="list-inline">
+                <li class="email"><i class="fa fa-envelope"></i><a th:href="@{'mailto:735626035@qq.com'}">735626035@qq.com</a>
+                </li>
+                <li><i class="fa fa-phone"></i> <a th:href="@{'tel: 18633540415'}">18633540415</a></li>
+                <li class="website"><i class="fa fa-globe"></i>
+                    <a th:href="@{'http://wujunlong.com:10439'}" th:target="_blank">wujunlong.com</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-nav-space-holder hidden-xs">
+        <div id="page-nav-wrapper" class="page-nav-wrapper text-center">
+            <div class="container">
+                <ul id="page-nav" class="nav page-nav list-inline">
+                    <li><a class="scrollto" th:href="@{'#experiences-section'}" href="#experiences-section">工作经历</a></li>
+                    <li><a class="scrollto" th:href="@{'#eudcation-section'}" href="#eudcation-section">教育经历</a></li>
+                    <li><a class="scrollto" th:href="@{'#skills-section'}" href="#skills-section">技术栈</a></li>
+                    <li><a class="scrollto" th:href="@{'#portfolio-section'}" href="#portfolio-section">项目经历</a></li>
+                    <li><a class="scrollto" th:href="@{'#testimonials-section'}" href="#testimonials-section">线上项目</a></li>
+                    <li><a class="scrollto" th:href="@{'#contact-section'}" href="#contact-section">联系我</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="wrapper container">
+    <section id="experiences-section" class="experiences-section section">
+        <h2 class="section-title">工作经历</h2>
+        <div class="timeline">
+            <div class="item">
+                <div class="work-place">
+                    <h3 class="place">秦皇岛市无为网络科技有限公司</h3>
+                    <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>秦皇岛</div>
+                </div>
+                <div class="job-meta">
+                    <div class="title">.Net开发攻城狮</div>
+                    <div class="time">2017.8至今</div>
+                </div>
+                <div class="job-desc">
+                    <p>为公司内部其它部门提供技术支持，参与的主要项目如下：</p>
+                    <ul>
+                        <li><a th:href="@{'http://admin.0335.com'}" th:target="_blank">炭火平台</a></li>
+                        <li><a th:href="@{'http://xk.0335.com'}" th:target="_blank">星空数据平台</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="item">
+                <div class="work-place">
+                    <h3 class="place">秦皇岛中仕科技开发有限公司</h3>
+                    <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>秦皇岛</div>
+                </div>
+                <div class="job-meta">
+                    <div class="title">Java讲师</div>
+                    <div class="time">2017.6 - 2017.8</div>
+                </div><!--//job-meta-->
+                <div class="job-desc">
+                    <p>担任Java讲师，讲授Java初级课程。</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="work-place">
+                    <h3 class="place">河北云酷科技有限公司</h3>
+                    <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>秦皇岛</div>
+                </div>
+                <div class="job-meta">
+                    <div class="title">Java攻城狮</div>
+                    <div class="time">2016.6 - 2017.6</div>
+                </div>
+                <div class="job-desc">
+                    <p>担任Java研发攻城狮，主要为电厂提供技术支持。</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="work-place">
+                    <h3 class="place">北京智慧星光信息技术有限公司</h3>
+                    <div class="location"><i class="fa fa-map-marker" aria-hidden="true"></i>北京</div>
+                </div>
+                <div class="job-meta">
+                    <div class="title">实习僧</div>
+                    <div class="time">2015.12 - 2016.5</div>
+                </div>
+                <div class="job-desc">
+                    <p>全网数据采集。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="eudcation-section" class="education-section section">
+        <h2 class="section-title">教育经历</h2>
+        <div class="row">
+            <div class="item col-xs-12 col-sm-12 text-center">
+                <div class="item-inner">
+                    <h3 class="degree">河北科技大学 - 软件工程 - 本科</h3>
+                    <div class="time">2012.9 - 2016.6</div>
+                    <div class="desc">
+                        主修课程：软件工程，计算机组成原理，计算机网络，操作系统，编译原理，数据库原理与应用，离散数学，汇编语言，C语言程序设计，C++语言程序设计......
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="skills-section" class="skills-section section text-center">
+        <h2 class="section-title">技术栈</h2>
+        <div class="top-skills">
+            <h3 class="subtitle">Top Skills</h3>
+            <div class="row">
+                <div class="item col-xs-12 col-sm-4">
+                    <div class="item-inner">
+                        <div class="chart-easy-pie text-center">
+                            <div class="chart-theme-1 chart" data-percent="50"><span>50</span>%</div>
+                        </div>
+                        <h4 class="skill-name">Java</h4>
+                        <div class="level">3年</div>
+                    </div>
+                </div>
+                <div class="item col-xs-12 col-sm-4">
+                    <div class="item-inner">
+                        <div class="chart-easy-pie text-center">
+                            <div class="chart-theme-1 chart" data-percent="50"><span>50</span>%</div>
+                        </div>
+                        <h4 class="skill-name">JavaScript</h4>
+                        <div class="level">3年</div>
+                    </div>
+                </div>
+                <div class="item col-xs-12 col-sm-4">
+                    <div class="item-inner">
+                        <div class="chart-easy-pie text-center">
+                            <div class="chart-theme-1 chart" data-percent="50"><span>50</span>%</div>
+                        </div>
+                        <h4 class="skill-name">.Net</h4>
+                        <div class="level">1年</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="other-skills">
+            <h3 class="subtitle">Other Skills</h3>
+            <div class="misc-skills">
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">Angular</span>
+                <span class="skill-tag">JQuery</span>
+                <span class="skill-tag">BootStrap</span>
+                <span class="skill-tag">Vue</span>
+                <span class="skill-tag">NodeJs</span>
+                <span class="skill-tag">SpringBoot</span>
+                <span class="skill-tag">Spring</span>
+                <span class="skill-tag">Dubbo</span>
+                <span class="skill-tag">Zookeeper</span>
+                <span class="skill-tag">Redis</span>
+                <span class="skill-tag">MongoDB</span>
+                <span class="skill-tag">ActiveMQ</span>
+                <span class="skill-tag">Mybatis</span>
+                <span class="skill-tag">Struts2</span>
+                <span class="skill-tag">Quartz</span>
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">Orcale</span>
+            </div>
+        </div>
+    </section>
+    <section id="portfolio-section" class="portfolio-section section">
+        <h2 class="section-title">开源项目</h2>
+        <ul id="filters" class="filters clearfix">
+            <li class="type active" data-filter="*">ALL</li>
+            <li class="type" data-filter=".backend">后端</li>
+            <li class="type" data-filter=".frontend">前端</li>
+        </ul>
+        <div class="items-wrapper isotope row">
+            <div class="item backend col-md-3 col-xs-6 ">
+                <div class="item-inner">
+                    <div class="content text-left">
+                        <h3 class="sub-title">
+                            <a th:href="@{'https://github.com/wjlonger/SpringBoot-Seed'}" th:target="'_blank'">SpringBoot-Seed</a>
+                        </h3>
+                        <div class="meta">SpringBoot</div>
+                        <div class="action">
+                            <a th:href="@{'https://github.com/wjlonger/SpringBoot-Seed'}" th:target="'_blank'">View on Github</a>
+                        </div>
+                    </div>
+                    <a class="link-mask" th:href="@{'https://github.com/wjlonger/SpringBoot-Seed'}" th:target="'_blank'"></a>
+                </div>
+            </div>
+
+            <div class="item backend frontend col-md-3 col-xs-6 ">
+                <div class="item-inner">
+                    <div class="content text-left">
+                        <h3 class="sub-title">
+                            <a th:href="@{'https://github.com/wjlonger/Dubbo-Customer'}" th:target="'_blank'">Dubbo-Customer</a>
+                        </h3>
+                        <div class="meta">SpringBoot</div>
+                        <div class="action">
+                            <a th:href="@{'https://github.com/wjlonger/Dubbo-Customer'}" th:target="'_blank'">View on Github</a>
+                        </div>
+                    </div>
+                    <a class="link-mask" th:href="@{'https://github.com/wjlonger/Dubbo-Customer'}"
+                       th:target="'_blank'"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="testimonials-section" class="testimonials-section section">
+        <h2 class="section-title">线上项目</h2>
+        <div id="testimonials-carousel" class="testimonials-carousel carousel slide" data-interval="400">
+            <ol class="carousel-indicators">
+                <li data-target="#testimonials-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#testimonials-carousel" data-slide-to="1"></li>
+                <li data-target="#testimonials-carousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner row text-center ">
+                <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><i class="fa fa-quote-left text-center"></i></div>
+                <div class="item col-lg-10 col-md-10 col-sm-10 col-xs-10 active">
+                    <blockquote class="quote">
+                    <p><a th:href="${'/druid/index.html'}" th:target="_blank" >SpringBoot + Druid 数据源监控</a></p>
+                    </blockquote>
+                </div>
+                <div class="item col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                    <blockquote class="quote">
+                        <p><a th:href="${'/swagger-ui.html'}" th:target="_blank">SpringBoot +Swagger2 Restful Api</a></p>
+                    </blockquote>
+                </div>
+                <div class="item col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                    <blockquote class="quote">
+                        <p><a th:href="@{'http://dubbo.wujunlong.com:10335'}" th:target="_blank" >SpringBoot + Dubbo + Zookeeper 分布式监控</a></p>
+                    </blockquote>
+                </div>
+                <div><i class="fa fa-quote-right text-center"></i></div>
+            </div>
+        </div>
+    </section>
+    <section id="contact-section" class="contact-section section">
+        <h2 class="section-title">我能为你做什么</h2>
+        <div class="intro">
+            <img class="profile-image img-circle" src="/img/me.jpg" th:src="@{'/img/me.jpg'}" alt="吴俊龙">
+            <div class="dialog">
+                <p>本人专注于后端开发，掌握目前互联网应用主流技术，对高并发,高吞吐量的应用开发有一定经验。</p>
+                <p><strong>我能为您提供如下的技术服务：</strong></p>
+                <ul class="list-unstyled service-list">
+                    <li><i class="fa fa-check" aria-hidden="true"></i> SpringBoot</li>
+                    <li><i class="fa fa-check" aria-hidden="true"></i> MongoDB</li>
+                    <li><i class="fa fa-check" aria-hidden="true"></i> Mybatis/Oracle + Druid</li>
+                    <li><i class="fa fa-check" aria-hidden="true"></i> Dubbo</li>
+                    <li><i class="fa fa-check" aria-hidden="true"></i> Zookeeper</li>
+                    <li><i class="fa fa-check" aria-hidden="true"></i> Nginx</li>
+                    <li><i class="fa fa-check" aria-hidden="true"></i> Redis</li>
+                    <li><i class="fa fa-check" aria-hidden="true"></i> Memcache</li>
+                    <li><i class="fa fa-check" aria-hidden="true"></i> Spring</li>
+                    <li><i class="fa fa-check" aria-hidden="true"></i> Struts2</li>
+                    <li><i class="fa fa-check" aria-hidden="true"></i> ActiveMQ</li>
+                    <li><i class="fa fa-check" aria-hidden="true"></i> Angular</li>
+                    <li><i class="fa fa-check" aria-hidden="true"></i> JQuery</li>
+                    <li><i class="fa fa-check" aria-hidden="true"></i> BootStrap</li>
+                </ul>
+                <p>如果贵公司使用这些技术并恰好需要掌握这类技术的开发人员，可以联系我~ 邮箱：<a th:href="@{'mailto:735626035@qq.com'}">735626035@qq.com</a>
+                    或者Call Me At <a th:href="@{'tel:18633540415'}">18633540415</a></p>
+                <ul class="social list-inline">
+                    <li>
+                        <a th:href="@{'https://github.com/wjlonger'}" th:target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a th:href="@{'http://sighttp.qq.com/msgrd?v=1&uin=735626035'}" th:target="_blank"><i class="fa fa-qq" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a th:href="@{'javascript:void(0);'}" class="wechat" data-toggle="popover" data-placement="top"><i class="fa fa-weixin" aria-hidden="true"></i></a>
+                    </li>
+                    <li>
+                        <a th:href="@{'login'}" th:target="_blank"><i class="fa fa-align-right" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</div>
+<footer>
+    <footer th:include="home/footer::footer"></footer>
+    <script type="text/javascript" src="/js/back-to-top.js" th:src="@{'/js/back-to-top.js'}"></script>
+    <script type="text/javascript" src="/js/main.js" th:src="@{'/js/main.js'}"></script>
+    <script type="text/javascript" src="/js/style-switcher.js" th:src="@{'/js/style-switcher.js'}"></script>
+</footer>
+</body>
+</html>

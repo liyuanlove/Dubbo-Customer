@@ -32,7 +32,6 @@ public final class Current {
     }
 
     public static List<SysMenu> menus(){
-        List<SysMenu> menus = user().getMenuList();
-        return menus;
+        return user() == null ? null : user().getMenuList();
     }
 }

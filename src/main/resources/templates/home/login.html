@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="zh-CN" >
+<head>
+    <title>登录</title>
+    <link href="/css/default.css" th:href="@{'/css/default.css'}" rel="stylesheet" />
+    <link href="/css/styles.css" th:href="@{'/css/styles.css'}" rel="stylesheet" />
+    <link href="/css/demo.css" th:href="@{'/css/demo.css'}" rel="stylesheet" />
+    <link href="/css/loaders.css" th:href="@{'/css/loaders.css'}" rel="stylesheet" />
+    <link href="/css/layui.css" th:href="@{'/css/layui.css'}" rel="stylesheet" />
+</head>
+<body>
+    <form action="/login" method="post">
+        <div class='login'>
+            <div class='login_title'>
+                <span>管理员登录</span>
+            </div>
+            <div class='login_fields'>
+                <div class='login_fields__user'>
+                    <div class='icon'>
+                        <img alt="" src='/img/user_icon_copy.png' th:src="@{'/img/user_icon_copy.png'}">
+                    </div>
+                    <input name="name" placeholder='用户名' maxlength="16" type='text' autocomplete="off" value="kbcxy"/>
+                    <div class='validation'>
+                        <img alt="" src='/img/tick.png' th:src="@{'/img/tick.png'}">
+                    </div>
+                </div>
+                <div class='login_fields__password'>
+                    <div class='icon'>
+                        <img alt="" src='/img/lock_icon_copy.png' th:src="@{'/img/lock_icon_copy.png'}">
+                    </div>
+                    <input name="password" placeholder='密码' maxlength="16" type='text' autocomplete="off">
+                    <div class='validation'>
+                        <img alt="" src='/img/tick.png' th:src="@{'/img/tick.png'}">
+                    </div>
+                </div>
+                <div class='login_fields__password'>
+                    <div class='icon'>
+                        <img alt="" src='/img/key.png' th:src="@{'/img/key.png'}">
+                    </div>
+                    <input type="text" th:name="code" name="code" th:placeholder="验证码" placeholder='验证码' th:maxlength="4" maxlength="4" autocomplete="off" th:autocomplete="off" >
+                    <div class='validation' style="opacity: 1; right: -5px;top: -3px;">
+                        <canvas class="J_codeimg" id="myCanvas" onclick="Code();">对不起，您的浏览器不支持canvas，请下载最新版浏览器!</canvas>
+                    </div>
+                </div>
+                <div class='login_fields__submit'>
+                    <button type='submit' value='登录'>登录</button>
+                </div>
+            </div>
+            <div class='success'>
+            </div>
+            <div class='disclaimer'>
+                <p>欢迎登陆后台管理系统</p>
+            </div>
+        </div>
+    </form>
+    <div class='authent'>
+        <div class="loader" style="height: 44px;width: 44px;margin-left: 28px;">
+            <div class="loader-inner ball-clip-rotate-multiple">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <p>认证中...</p>
+    </div>
+    <div class="OverWindows"></div>
+    <footer>
+        <div th:replace="home/footer::footer"></div>
+        <script type="text/javascript" src="/js/jquery-ui.min.js" th:src="@{'/js/jquery-ui.min.js'}"></script>
+        <script type="text/javascript" src="/js/layui/layui.js" th:src="@{'/js/layui/layui.js'}"></script>
+        <script type="text/javascript" src="/js/stopExecutionOnTimeout.js" th:src="@{'/js/stopExecutionOnTimeout.js'}"></script>
+        <script type="text/javascript" src="/js/Particleground.js" th:src="@{'/js/Particleground.js'}"></script>
+        <script type="text/javascript" src="/js/Treatment.js" th:src="@{'/js/Treatment.js'}"></script>
+        <!--<script type="text/javascript" src="/js/jquery.mockjax.js" th:src="@{'https://cdn.bootcss.com/jquery-mockjax/1.6.2/jquery.mockjax.min.js'}"></script>-->
+        <script type="text/javascript" src="/js/login.js" th:src="@{'/js/login.js'}"></script>
+    </footer>
+</body>
+</html>
