@@ -3,8 +3,7 @@ package com.coder.dubbo.customer.controller.api;
 import com.coder.springbootdomecollection.model.DoubleColorBall;
 import com.coder.springbootdomecollection.service.DoubleColorBallService;
 import com.coder.util.ConstUtils;
-import com.coder.util.DateUtil;
-import com.coder.util.ExcelUtil;
+import com.coder.util.DateUtils;
 import com.coder.util.StringUtils;
 import com.github.pagehelper.PageInfo;
 import org.apache.poi.ss.usermodel.Row;
@@ -15,10 +14,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import com.coder.util.ExcelUtils;
 
 @RestController
 @RequestMapping("/api/doublecolorball")
@@ -43,18 +42,18 @@ public class ApiDoubleColorBallController {
     @PostMapping("/excel")
     public String addDoubleColorBall(@RequestParam("file") MultipartFile file){
         String fileName = file.getOriginalFilename();
-        Workbook workBook = ExcelUtil.openWorkbookForRead(file,fileName);
-        if(ExcelUtil.isExcel(workBook)){
+        Workbook workBook = ExcelUtils.openWorkbookForRead(file,fileName);
+        if(ExcelUtils.isExcel(workBook)){
             Sheet sheet = workBook.getSheetAt(0);
             List<DoubleColorBall> doubleColorBalls = new ArrayList<>();
             for(int i=3,totalRowNum=sheet.getLastRowNum(); i<=totalRowNum; i++){
                 Row row = sheet.getRow(i);
                 if(row != null){
                     DoubleColorBall doubleColorBall = new DoubleColorBall();
-                    String dateStr = String.valueOf(ExcelUtil.getCellValue(row.getCell((short)1)));
-                    Date createDate = DateUtil.parse(dateStr,ConstUtils.DATAPATTERN1);
-                    Integer id = Integer.valueOf(String.valueOf(ExcelUtil.getCellValue(row.getCell((short)2))));
-                    String ballStr = String.valueOf(ExcelUtil.getCellValue(row.getCell((short)3)));
+                    String dateStr = String.valueOf(ExcelUtils.getCellValue(row.getCell((short)1)));
+                    Date createDate = DateUtils.parse(dateStr,ConstUtils.DATAPATTERN1);
+                    Integer id = Integer.valueOf(String.valueOf(ExcelUtils.getCellValue(row.getCell((short)2))));
+                    String ballStr = String.valueOf(ExcelUtils.getCellValue(row.getCell((short)3)));
                     if(!StringUtils.isNullOrEmpty(ballStr)){
                         String[] balls = ballStr.split(" ");
                         if(balls.length >= 7){

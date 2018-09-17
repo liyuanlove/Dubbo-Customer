@@ -6,48 +6,45 @@
        lang="zh-CN">
     <head></head>
     <body>
-        <div class="container-fluid" layout:fragment="content">
+        <div id="app" class="container-fluid" layout:fragment="content">
+
             <div class="row">
-                <div class="col-lg-6 col-md-12 col-xs-12">
-                    <div class="card">
-                        <div class="card-header border-bottom">
-                            <h4 class="card-title">Default Tabs</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="tab-info">
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li class="nav-item">
-                                        <a href="#default-tab-1" class="nav-link active" role="tab" data-toggle="tab">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#default-tab-2" class="nav-link" role="tab" data-toggle="tab">Profile</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#default-tab-3" class="nav-link" role="tab" data-toggle="tab">Setting</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="default-tab-1">
-                                        <div class="p-20">
-                                            <p>Oh, yes, that's very good. I like that. Oh! Something's not right because now I can't see. Wait. Wait! Oh, my! what have you done? I'm backwards, you stupid furball. Only an overgrown mophead like you would be stupid enough... I feel terrible. Why are they doing this? They never even asked me any questions. Lando. Get out of here, Lando! Shut up and listen! Vader has agreed to turn Leia and Chewie over to me. Over to you? They'll have to stay here, but at least they'll be safe.</p>
-                                        </div>
+
+                    <div class="col-lg-6 col-md-12 col-xs-12" v-for="menu in menus">
+                        <div class="card">
+                            <div class="card-header border-bottom">
+                                <h4 class="card-title"><strong>{{menu.name}}</strong></h4>
+                            </div>
+                            <div class="card-body">
+                                <form class="forms-sample">
+                                    <div class="custom-control custom-checkbox m-b-5" v-for="(value, key, index) in menu.childrenMenus">
+                                        <input type="checkbox" class="custom-control-input" id="checkbox{{index}}}">
+                                        <label class="custom-control-label" for="checkbox{{index}}">{{value.name}}</label>
                                     </div>
-                                    <div role="tabpanel" class="tab-pane fade" id="default-tab-2">
-                                        <div class="p-20">
-                                            <p>Rouge Group, use your harpoons and tow cables. Go for the legs. It might be our only chance of stopping them. All right, stand by, Dack. Luke, we've got a malfunction in fire control. I'll have to cut in the auxiliary. ust hang on. Hang on, Dack. Get ready to fire that tow cable. Dack? Dack! Yes, Lord Vader. I've reached the main power generator. The shield will be down in moments. You may start your landing. Rouge Three. Copy, Rouge Leader Wedge, I've lost my gunner.You'll have to make this shot.</p>
-                                        </div>
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane fade" id="default-tab-3">
-                                        <div class="p-20">
-                                            <p>If only you had attached my legs, I wouldn't be in this ridiculous position. Now, remember, Chewbacca, you have a responsibility to me, so don't do anything foolish. What's going on...buddy? You're being put into carbon freeze. What if he doesn't survive? He's worth a lot to me. The Empire will compensate you if he dies. Put him in! Oh, no! No, no, no! Stop, Chewbacca, stop...! Stop, Chewie, stop! Do you hear me? Stop! Yes, stop, please! I'm not ready to die. Chewie! Chewie, this won't help me.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-                </div>
+
             </div>
+        </div>
+        <div layout:fragment="foot">
+            <script type="text/javascript" th:inline="javascript">
+                /* <![CDATA[ */
+                var data = [[${data}]];
+                console.log(data);
+                var vm = new Vue({
+                    el: '#app',
+                    data: {
+                        menus:data
+                    },
+                    methods: {
+
+                    }
+                })
+                /* ]]> */
+
+            </script>
         </div>
     </body>
 </html>
