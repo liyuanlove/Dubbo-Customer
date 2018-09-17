@@ -29,9 +29,11 @@ public class AopConfig {
         for(Object obj:jp.getArgs()){
             if(obj instanceof Model){
                 ((Model) obj).addAttribute("title",StringUtils.EMPTY);
+                ((Model) obj).addAttribute("menus",Current.menus());
+                ((Model) obj).addAttribute("parentmenu",new SysMenu());
+                ((Model) obj).addAttribute("childmenu",new SysMenu());
                 HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
                 String uri = StringUtils.null2Empty(request.getRequestURI());
-                ((Model) obj).addAttribute("menus",Current.menus());
                 List<SysMenu> menus = Current.menus();
                 block:{
                     if(!CollectionUtils.isNullOrEmptyStrict(menus)){
@@ -41,8 +43,8 @@ public class AopConfig {
                                 for(SysMenu childMenu : childMenus){
                                     if(uri.equals(childMenu.getUrl())){
                                         ((Model) obj).addAttribute("title",childMenu.getName() + " - ");
-                                        ((Model) obj).addAttribute("parentmenu",menu.getUrl());
-                                        ((Model) obj).addAttribute("childmenu",uri);
+                                        ((Model) obj).addAttribute("parentmenu",menu);
+                                        ((Model) obj).addAttribute("childmenu",childMenu);
                                         break block;
                                     }
                                 }

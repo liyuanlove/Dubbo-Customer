@@ -9,12 +9,18 @@
     <body>
         <div class="app header-default side-nav-dark">
             <div class="layout">
-                <header th:include="layout/layoutbody::body"></header>
-                <div th:include="layout/layoutnav::nav"></div>
-                <div layout:fragment="content"></div>
+                <div th:replace="layout/layoutbody::body"></div>
+                <div th:replace="layout/layoutnav::nav"></div>
+
+                <div class="page-container">
+                    <div class="main-content">
+                        <div th:replace="layout/layoutbodytitle::bodytitle"></div>
+                        <div layout:fragment="content"></div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="preloader" style="display: none;">
+        <div id="preloader">
             <div class="loader" id="loader-1"></div>
         </div>
         <footer th:include="layout/layoutfoot::footer"></footer>
