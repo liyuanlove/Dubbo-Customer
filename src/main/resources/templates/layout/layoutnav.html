@@ -12,7 +12,8 @@
         le：less equal（小于等于）<=
         ne：not equal（不等于）!=
         */-->
-        <div class="side-nav expand-lg" th:fragment="nav">
+        <div th:fragment="nav">
+        <div class="side-nav expand-lg" >
             <div class="side-nav-inner">
                 <ul class="side-nav-menu">
                     <li th:each="menu:${menus}"  th:class="${menu.url == parentmenu.url} ? 'nav-item dropdown open' : 'nav-item dropdown'">
@@ -34,6 +35,6 @@
                 </ul>
             </div>
         </div>
-
+        </div>
     </body>
 </html>
