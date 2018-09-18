@@ -9,11 +9,11 @@
     <body>
         <div class="app header-default side-nav-dark">
             <div class="layout">
-                <div th:include="layout/layoutbody::body"></div>
-                <div th:include="layout/layoutnav::nav"></div>
+                <div class="header navbar" th:include="layout/layoutbody::body"></div>
+                <div class="side-nav expand-lg" th:include="layout/layoutnav::nav"></div>
                 <div class="page-container">
                     <div class="main-content">
-                        <div th:include="layout/layoutbodytitle::bodytitle"></div>
+                        <div class="container-fluid" th:include="layout/layoutbodytitle::bodytitle"></div>
                         <div layout:fragment="content"></div>
                     </div>
                 </div>
