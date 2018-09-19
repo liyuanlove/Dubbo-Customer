@@ -10,17 +10,16 @@
     <body>
         <div id="app" class="container-fluid" layout:fragment="content">
             <div class="row" >
-                <div class="box col-xs-12 col-sm-12 col-md-6 col-lg-6" v-for="(menu,outterindex) in menus" :key="menu.id">
+                <div class="box col-xs-12 col-sm-12 col-md-12 col-lg-6" v-for="(menu,outterindex) in menus" :key="menu.id" @click.stop.prevent="tableToggle(menu)">
                     <div class="box-inner">
                         <div class="box-header well">
-                            <h2><i v-bind:class="[menu.icon?menu.icon:'glyphicon glyphicon-plus-sign']"></i> {{menu.name}}</h2>
+                            <h2><i v-bind:class="[menu.icon ? menu.icon:'glyphicon glyphicon-plus-sign']"></i> {{menu.name}}</h2>
                             <div class="box-icon">
                                 <a href="#" @click.stop.prevent="add(menu)" class="btn btn-round btn-default"><i class="glyphicon glyphicon-plus"></i></a>
                                 <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
-                                <a href="#" class="btn btn-minimize btn-round btn-default"><i class="glyphicon glyphicon-chevron-down"></i></a>
                             </div>
                         </div>
-                        <div class="box-content" style="display: none;">
+                        <div class="box-content" v-if="menu.show">
                             <table class="table" >
                                 <thead>
                                     <tr>
@@ -41,7 +40,7 @@
                                         <td v-bind:title="smenu.order"><input type="number" v-model="smenu.order" class="form-control" /></td>
                                         <td>
                                             <a th:href="'#'" @click.prevent.stop="save(smenu,outterindex)" class="glyphicon glyphicon-ok pull-left"></a>
-                                            <a th:href="'#'" @click.prevent.stop="del(menu.childrenMenus,smenu,innerindex)" class="glyphicon glyphicon-trash pull-right"></a>
+                                            <a th:href="'#'" @click.prevent.stop="del(menu,smenu,innerindex)" class="glyphicon glyphicon-trash pull-right"></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -84,34 +83,36 @@
                             }).then(response => {
                                 console.log('post发送Ajax请求,请求成功',response.data)
                                 vm.$set(vm.menus,index,response.data.menu);
+                                Vue.set(menu,"show",true)
                             }).catch(response => {
                                 console.log('post发送Ajax请求,请求失败',response)
                             });
                         },
-                        del:function(menus,smenu,index){
+                        del:function(menu,smenu,index){
                             if(smenu.id){
                                 axios.delete('/api/menu/'+smenu.id)
                                 .then(response => {
                                     console.log('post发送Ajax请求,请求成功',response.data)
                                     if(response.data.code == 1){
-                                        menus.splice(index,1);
+                                        menu.childrenMenus.splice(index,1);
                                     }
                                 }).catch(response => {
                                     console.log('post发送Ajax请求,请求失败',response)
                                 });
                             }else{
-                                menus.splice(index,1);
+                                menu.childrenMenus.splice(index,1);
+                            }
+                            Vue.set(menu,"show",true)
+                        },
+                        tableToggle:function(menu){
+                            if(menu.show){
+                                menu.show = !menu.show;
+                            }else{
+                                Vue.set(menu,"show",true)
                             }
                         }
                     }
                 });
-                $(function(){
-                    $('.btn-setting').click(function (e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        $('#myModal').modal('show');
-                    });
-                })
 
                 /*]]>*/
             </script>
