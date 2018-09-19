@@ -10,7 +10,7 @@
     <body>
         <div id="app" class="container-fluid" layout:fragment="content">
             <div class="row" >
-                <div class="box col-xs-12 col-sm-12 col-md-6 col-lg-6" v-for="menu in menus">
+                <div class="box col-xs-12 col-sm-12 col-md-6 col-lg-6" v-for="menu in menus" :key="menu.id">
                     <div class="box-inner">
                         <div class="box-header well">
                             <h2><i class="{{menu.icon}}"></i> {{menu.name}}</h2>
@@ -23,27 +23,27 @@
                         <div class="box-content" style="display: none;">
                             <table class="table" >
                                 <thead>
-                                <tr>
-                                    <th ><strong>#</strong></th>
-                                    <th ><strong>NAME</strong></th>
-                                    <th ><strong>URL</strong></th>
-                                    <th ><strong>ICON</strong></th>
-                                    <th ><strong>ORDER</strong></th>
-                                    <th ><strong>OPERATE</strong></th>
-                                </tr>
+                                    <tr>
+                                        <th ><strong>#</strong></th>
+                                        <th ><strong>NAME</strong></th>
+                                        <th ><strong>URL</strong></th>
+                                        <th ><strong>ICON</strong></th>
+                                        <th ><strong>ORDER</strong></th>
+                                        <th ><strong>OPERATE</strong></th>
+                                    </tr>
                                 </thead>
                                 <tbody >
-                                <tr v-for="smenu in menu.childrenMenus">
-                                    <td>{{smenu.id}}</td>
-                                    <td v-bind:title="smenu.name"><input type="text" v-model="smenu.name" class="form-control" /></td>
-                                    <td v-bind:title="smenu.url"><input type="text" v-model="smenu.url" class="form-control" /></td>
-                                    <td><i class="{{smenu.icon}}"></i></td>
-                                    <td v-bind:title="smenu.order"><input type="number" v-model="smenu.order" class="form-control" /></td>
-                                    <td>
-                                        <a th:href="'#'" class="glyphicon glyphicon-ok pull-left success"></a>
-                                        <a th:href="'#'" class="glyphicon glyphicon-trash pull-right danger"></a>
-                                    </td>
-                                </tr>
+                                    <tr v-for="smenu in menu.childrenMenus" :key="smenu.id">
+                                        <td >{{smenu.id}}</td>
+                                        <td v-bind:title="smenu.name"><input type="text" v-model="smenu.name" class="form-control" /></td>
+                                        <td v-bind:title="smenu.url"><input type="text" v-model="smenu.url" class="form-control" /></td>
+                                        <td><i v-bind:class="[smenu.icon?smenu.icon:'glyphicon glyphicon-plus-sign']"></i></td>
+                                        <td v-bind:title="smenu.order"><input type="number" v-model="smenu.order" class="form-control" /></td>
+                                        <td>
+                                            <a th:href="'#'" class="glyphicon glyphicon-ok pull-left"></a>
+                                            <a th:href="'#'" class="glyphicon glyphicon-trash pull-right"></a>
+                                        </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -80,12 +80,7 @@
 
                 /*]]>*/
             </script>
-            <style>
-                *{
-                    color:#DF2870 !important;
-                }
 
-            </style>
         </div>
     </body>
 </html>

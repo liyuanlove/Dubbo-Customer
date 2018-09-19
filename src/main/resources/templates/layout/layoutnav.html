@@ -27,7 +27,7 @@
                         </a>
                         <ul th:class="'dropdown-menu sub-down'" th:style="${menu.url == parentmenu.url} ? 'display:block;' : 'display:none;'">
                             <li th:each="smenu:${menu.childrenMenus}" th:class="${smenu.url == childmenu.url} ? 'active' : ''">
-                                <a th:href="${smenu.url}" th:text="${smenu.name}"></a>
+                                <a th:href="${smenu.url}"><i th:class="${smenu.icon}"></i> <span th:text="${smenu.name}"></span></a>
                             </li>
                         </ul>
                     </li>
