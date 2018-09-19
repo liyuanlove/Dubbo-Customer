@@ -13,9 +13,9 @@
                 <div class="box col-xs-12 col-sm-12 col-md-6 col-lg-6" v-for="menu in menus" :key="menu.id">
                     <div class="box-inner">
                         <div class="box-header well">
-                            <h2><i class="{{menu.icon}}"></i> {{menu.name}}</h2>
+                            <h2><i v-bind:class="[menu.icon?menu.icon:'glyphicon glyphicon-plus-sign']"></i> {{menu.name}}</h2>
                             <div class="box-icon">
-                                <a href="#" @click="add(menu,$event)" class="btn btn-round btn-default"><i class="glyphicon glyphicon-plus"></i></a>
+                                <a href="#" @click.stop.prevent="add(menu)" class="btn btn-round btn-default"><i class="glyphicon glyphicon-plus"></i></a>
                                 <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
                                 <a href="#" class="btn btn-minimize btn-round btn-default"><i class="glyphicon glyphicon-chevron-down"></i></a>
                             </div>
@@ -62,10 +62,7 @@
                         menus:data
                     },
                     methods: {
-                        add:function(menu,e){
-                            e.preventDefault();
-                            e.stopPropagation();
-
+                        add:function(menu){
                             menu.childrenMenus.push({})
                         }
                     }
