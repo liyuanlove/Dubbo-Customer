@@ -40,8 +40,8 @@
                                         <td><i v-bind:class="[smenu.icon?smenu.icon:'glyphicon glyphicon-plus-sign']"></i></td>
                                         <td v-bind:title="smenu.order"><input type="number" v-model="smenu.order" class="form-control" /></td>
                                         <td>
-                                            <a th:href="'#'" class="glyphicon glyphicon-ok pull-left"></a>
-                                            <a th:href="'#'" class="glyphicon glyphicon-trash pull-right"></a>
+                                            <a th:href="'#'" @save.stop.prevent="save(smenu)" class="glyphicon glyphicon-ok pull-left"></a>
+                                            <a th:href="'#'" @delete.stop.prevent="delete(smenu)" class="glyphicon glyphicon-trash pull-right"></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -63,7 +63,32 @@
                     },
                     methods: {
                         add:function(menu){
-                            menu.childrenMenus.push({})
+                            menu.childrenMenus.push({
+                                icon : 'glyphicon glyphicon-plus-sign',
+                                pid : menu.id
+                            })
+                        },
+                        save:function(menu){
+                            axios.post('/server/server-post.php',this.users,{  //2.使用transformRequest，在请求发送前将请求数据进行转换
+                                transformRequest:[
+                                    function(data){
+                                        let params='';
+                                        for(let index in data){
+                                            params+=index+'='+data[index]+'&'
+                                        }
+                                        return params;
+                                    }
+                                ]
+                            })
+                                .then(response => {
+                                    console.log('post发送Ajax请求,请求成功',response.data)
+                                })
+                                .catch(response => {
+                                    console.log('post发送Ajax请求,请求失败',response)
+                                })
+                        },
+                        delete:function(menu){
+
                         }
                     }
                 });
