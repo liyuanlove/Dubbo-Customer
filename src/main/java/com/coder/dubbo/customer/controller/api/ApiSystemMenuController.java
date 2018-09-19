@@ -6,9 +6,7 @@ import com.coder.springbootdomecollection.model.SysMenu;
 import com.coder.springbootdomecollection.service.SysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,13 +19,33 @@ public class ApiSystemMenuController {
     private SysMenuService sysMenuService;
 
     @PostMapping()
-    public List<SysMenu> Save(SysMenu sysMenu){
+    public String save(SysMenu sysMenu){
         int i = sysMenuService.save(sysMenu);
         JSONObject json = new JSONObject();
         if(i > 0){
-            json.put("code",State.SUCCESS);
-            json.put("msg",State.SUCCESS.getValue());
+            json.put("code",State.SUCCESS.getValue());
+            json.put("msg",State.SUCCESS);
+            SysMenu pmenu = sysMenuService.selectByPrimaryKey(sysMenu.getPid());
+            json.put("menu",pmenu);
+        }else{
+            json.put("code",State.FAIL);
+            json.put("msg",State.FAIL.getValue());
         }
+        return json.toJSONString();
+    }
+
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable int id){
+        int i = sysMenuService.deleteByPrimaryKey(id);
+        JSONObject json = new JSONObject();
+        if(i > 0){
+            json.put("code",State.SUCCESS.getValue());
+            json.put("msg",State.SUCCESS);
+        }else{
+            json.put("code",State.FAIL);
+            json.put("msg",State.FAIL.getValue());
+        }
+        return json.toJSONString();
     }
 
 }

@@ -637,10 +637,13 @@ ul.github-buttons li {
 }
 
 /* Tablet */
+
 @media only screen and (min-width: 768px) and (max-width: 979px) {
+    /*
     .box-icon {
         display: none;
     }
+    */
 
     .box-header h2 {
         font-size: 13px !important;

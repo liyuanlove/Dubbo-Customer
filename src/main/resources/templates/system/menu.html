@@ -10,7 +10,7 @@
     <body>
         <div id="app" class="container-fluid" layout:fragment="content">
             <div class="row" >
-                <div class="box col-xs-12 col-sm-12 col-md-6 col-lg-6" v-for="menu in menus" :key="menu.id">
+                <div class="box col-xs-12 col-sm-12 col-md-6 col-lg-6" v-for="(menu,outterindex) in menus" :key="menu.id">
                     <div class="box-inner">
                         <div class="box-header well">
                             <h2><i v-bind:class="[menu.icon?menu.icon:'glyphicon glyphicon-plus-sign']"></i> {{menu.name}}</h2>
@@ -33,15 +33,15 @@
                                     </tr>
                                 </thead>
                                 <tbody >
-                                    <tr v-for="smenu in menu.childrenMenus" :key="smenu.id">
+                                    <tr v-for="(smenu,innerindex) in menu.childrenMenus" :key="smenu.id">
                                         <td >{{smenu.id}}</td>
                                         <td v-bind:title="smenu.name"><input type="text" v-model="smenu.name" class="form-control" /></td>
                                         <td v-bind:title="smenu.url"><input type="text" v-model="smenu.url" class="form-control" /></td>
                                         <td><i v-bind:class="[smenu.icon?smenu.icon:'glyphicon glyphicon-plus-sign']"></i></td>
                                         <td v-bind:title="smenu.order"><input type="number" v-model="smenu.order" class="form-control" /></td>
                                         <td>
-                                            <a th:href="'#'" @save.stop.prevent="save(smenu)" class="glyphicon glyphicon-ok pull-left"></a>
-                                            <a th:href="'#'" @delete.stop.prevent="delete(smenu)" class="glyphicon glyphicon-trash pull-right"></a>
+                                            <a th:href="'#'" @click.prevent.stop="save(smenu,outterindex)" class="glyphicon glyphicon-ok pull-left"></a>
+                                            <a th:href="'#'" @click.prevent.stop="del(menu.childrenMenus,smenu,innerindex)" class="glyphicon glyphicon-trash pull-right"></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -68,27 +68,40 @@
                                 pid : menu.id
                             })
                         },
-                        save:function(menu){
-                            axios.post('/server/server-post.php',this.users,{  //2.使用transformRequest，在请求发送前将请求数据进行转换
+                        save:function(menu,index){
+                            axios.post('/api/menu/',menu,{
                                 transformRequest:[
                                     function(data){
-                                        let params='';
+                                        let params = '';
                                         for(let index in data){
-                                            params+=index+'='+data[index]+'&'
+                                            if(typeof data[index] != 'object'){
+                                                params += index + '=' + data[index] + '&'
+                                            }
                                         }
                                         return params;
                                     }
                                 ]
-                            })
+                            }).then(response => {
+                                console.log('post发送Ajax请求,请求成功',response.data)
+                                vm.$set(vm.menus,index,response.data.menu);
+                            }).catch(response => {
+                                console.log('post发送Ajax请求,请求失败',response)
+                            });
+                        },
+                        del:function(menus,smenu,index){
+                            if(smenu.id){
+                                axios.delete('/api/menu/'+smenu.id)
                                 .then(response => {
                                     console.log('post发送Ajax请求,请求成功',response.data)
-                                })
-                                .catch(response => {
+                                    if(response.data.code == 1){
+                                        menus.splice(index,1);
+                                    }
+                                }).catch(response => {
                                     console.log('post发送Ajax请求,请求失败',response)
-                                })
-                        },
-                        delete:function(menu){
-
+                                });
+                            }else{
+                                menus.splice(index,1);
+                            }
                         }
                     }
                 });
