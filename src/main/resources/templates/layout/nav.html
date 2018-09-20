@@ -1,0 +1,89 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="zh-CN">
+    <head></head>
+    <body>
+        <div  th:fragment="nav">
+            <li class="collapsed-content">
+                <ul>
+                    <li class="search"></li>
+                </ul>
+            </li>
+            <li class="navigation" id="navigation">
+                <a href="#" class="sidebar-toggle" data-toggle="#navigation">Navigation <i class="fa fa-angle-up"></i></a>
+                <ul class="menu">
+                    <li th:each="menu:${menus}" th:class="${menu.url == parentmenu.url} ? 'active dropdown' : 'dropdown'">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i th:class="${menu.icon}"></i><strong th:text="${menu.name}"></strong> <b class="fa fa-plus dropdown-plus"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li th:each="smenu : ${menu.childrenMenus}">
+                                <a th:href="${smenu.url}" href="form-elements.html">
+                                    <i th:class="${smenu.icon}" class="fa fa-caret-right"></i> <strong th:text="${smenu.name}"></strong>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <!--/*
+            <li class="summary" id="order-summary">
+                <a href="#" class="sidebar-toggle underline" data-toggle="#order-summary">Orders Summary <i class="fa fa-angle-up"></i></a>
+
+                <div class="media">
+                    <a class="pull-right" href="#">
+                        <span id="sales-chart"></span>
+                    </a>
+                    <div class="media-body">
+                        This week sales
+                        <h3 class="media-heading">26, 149</h3>
+                    </div>
+                </div>
+
+                <div class="media">
+                    <a class="pull-right" href="#">
+                        <span id="balance-chart"></span>
+                    </a>
+                    <div class="media-body">
+                        This week balance
+                        <h3 class="media-heading">318, 651</h3>
+                    </div>
+                </div>
+
+            </li>
+
+            <li class="settings" id="general-settings">
+                <a href="#" class="sidebar-toggle underline" data-toggle="#general-settings">General Settings <i class="fa fa-angle-up"></i></a>
+
+                <div class="form-group">
+                    <label class="col-xs-8 control-label">Switch ON</label>
+                    <div class="col-xs-4 control-label">
+                        <div class="onoffswitch greensea">
+                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switch-on" checked="">
+                            <label class="onoffswitch-label" for="switch-on">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-8 control-label">Switch OFF</label>
+                    <div class="col-xs-4 control-label">
+                        <div class="onoffswitch greensea">
+                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switch-off">
+                            <label class="onoffswitch-label" for="switch-off">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+    */-->
+        </div>
+    </body>
+</html>

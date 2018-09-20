@@ -1,0 +1,28 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      lang="zh-CN">
+    <head>
+        <head th:include="layout/layouthead::header"></head>
+    </head>
+    <body>
+        <div class="app header-default side-nav-dark">
+            <div class="layout">
+                <div class="header navbar" th:include="layout/layoutbody::body"></div>
+                <div class="side-nav expand-lg" th:include="layout/layoutnav::nav"></div>
+                <div class="page-container">
+                    <div class="main-content">
+                        <div class="container-fluid" th:include="layout/layoutbodytitle::bodytitle"></div>
+                        <div layout:fragment="content"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="preloader">
+            <div class="loader" id="loader-1"></div>
+        </div>
+        <div th:include="layout/layoutfoot::foot"></div>
+        <div layout:fragment="foot"></div>
+    </body>
+</html>

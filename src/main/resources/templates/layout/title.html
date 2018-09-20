@@ -1,0 +1,19 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="zh-CN">
+    <head></head>
+    <body>
+        <div th:fragment="title">
+            <h2><i class="fa fa-tachometer"></i> <strong th:text="${childmenu.name}"></strong>
+                <span>// Place subtitle here...</span></h2>
+            <div class="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li>You are here</li>
+                    <li><a th:href="${parentmenu.url}" href="index.html" th:text="${parentmenu.name}"></a></li>
+                    <li class="active" th:text="${childmenu.name}"></li>
+                </ol>
+            </div>
+        </div>
+    </body>
+</html>
