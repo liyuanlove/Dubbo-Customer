@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    NProgress.start();
     $('.btn-close').click(function (e) {
         e.preventDefault();
         e.stopPropagation();
