@@ -1,0 +1,69 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="zh-CN">
+    <head></head>
+    <body>
+        <div th:fragment="header">
+            <title th:text="${title} + '管理后台'">管理后台</title>
+            <meta name="description" content="吴俊龙管理后台" />
+            <meta http-equiv="Content-Type" content="text/html;" charset="UTF-8"/>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <link rel="icon" type="image/x-icon" th:href="@{'/favicon.ico'}"/>
+            <meta http-equiv="Window-target" content="_top" />
+            <meta name="viewport" content="width=device-width,  initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <meta name="apple-mobile-web-app-capable" content="yes"/>
+            <meta name="apple-mobile-web-app-title" content="吴俊龙管理后台" />
+            <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+            <meta name="format-detection" content="telephone=no" />
+            <meta name="format-detection" content="address=no" />
+            <meta name="format-detection" content="email=no" />
+            <link rel="dns-prefetch" href="//ajax.googleapis.com" th:href="@{'//ajax.googleapis.com'}" />
+            <link rel="dns-prefetch" href="//partner.gooleadservices.com" th:href="@{'//partner.gooleadservices.com'}" />
+            <link rel="dns-prefetch" href="//google.com.tw" th:href="@{'//google.com.tw'}" />
+            <link rel="dns-prefetch" href="//pagead2.googlesyndication.com" th:href="@{'//pagead2.googlesyndication.com'}" />
+            <link rel="dns-prefetch" href="//google-analytics.com" th:href="@{'//google-analytics.com'}" />
+            <link rel="dns-prefetch" href="//googleads.g.doubleclick.net" th:href="@{'//googleads.g.doubleclick.net'}" />
+            <link rel="dns-prefetch" href="//pubads.g.doubleclick.net" th:href="@{'//pubads.g.doubleclick.net'}" />
+            <link rel="dns-prefetch" href="//graph.facebook.com" th:href="@{'//graph.facebook.com'}" />
+            <link rel="dns-prefetch" href="//graph.facebook.com" th:href="@{'//graph.facebook.com'}" />
+            <link rel="dns-prefetch" href="//connect.facebook.net" th:href="@{'//connect.facebook.net'}" />
+            <meta name="robots" content="noarchive" />
+            <meta name="google" content="notranslate" />
+            <meta name="author" content="吴俊龙" />
+            <!-- Bootstrap -->
+            <link href="/assets/css/vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+            <!--/* 自行添加的样式 s */-->
+            <!--/*
+            <link rel="stylesheet" type="text/css" href="/assets_bu/css/bootstrap-cerulean.min.css" th:href="@{'/assets_bu/css/bootstrap-cerulean.min.css'}" >
+            */-->
+            <!--/* 自行添加的样式 e */-->
+            <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+            <link rel="stylesheet" href="/assets/css/vendor/animate/animate.min.css">
+            <link type="text/css" rel="stylesheet" media="all" href="/assets/js/vendor/mmenu/css/jquery.mmenu.all.css" />
+            <link rel="stylesheet" href="/assets/js/vendor/videobackground/css/jquery.videobackground.css">
+            <link rel="stylesheet" href="/assets/css/vendor/bootstrap-checkbox.css">
+
+            <link rel="stylesheet" href="/assets/js/vendor/rickshaw/css/rickshaw.min.css">
+            <link rel="stylesheet" href="/assets/js/vendor/morris/css/morris.css">
+            <link rel="stylesheet" href="/assets/js/vendor/tabdrop/css/tabdrop.css">
+            <link rel="stylesheet" href="/assets/js/vendor/summernote/css/summernote.css">
+            <link rel="stylesheet" href="/assets/js/vendor/summernote/css/summernote-bs3.css">
+            <link rel="stylesheet" href="/assets/js/vendor/chosen/css/chosen.min.css">
+            <link rel="stylesheet" href="/assets/js/vendor/chosen/css/chosen-bootstrap.css">
+
+            <link href="/assets/css/minimal.css" rel="stylesheet">
+
+            <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+            <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+            <![endif]-->
+
+            <!--/* 自行添加的样式 s */-->
+            <link rel="stylesheet" type="text/css" href="/assets/css/charisma-app.css" th:href="@{'/assets/css/charisma-app.css'}" >
+            <!--/* 自行添加的样式 e */-->
+        </div>
+    </body>
+</html>

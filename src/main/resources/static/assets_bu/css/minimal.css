@@ -1,4 +1,4 @@
-@import url(http://fonts.useso.com/css?family=Ubuntu+Mono|Roboto:400,100,300,500,700,300italic|Roboto+Condensed:300,400,700|Roboto+Slab:400,700&subset=latin,latin-ext);
+/*@import url(http://fonts.useso.com/css?family=Ubuntu+Mono|Roboto:400,100,300,500,700,300italic|Roboto+Condensed:300,400,700|Roboto+Slab:400,700&subset=latin,latin-ext);*/
 /*****************************************/
 /************* MAIN SETTINGS *************/
 /*****************************************/
@@ -170,8 +170,10 @@ body .navbar {
       height: 45px;
       line-height: 45px;
       background: url(../images/minimal-logo.png) no-repeat 0 16px; }
+    /*
       body .navbar .navbar-header .navbar-brand img {
         vertical-align: top; }
+        */
     body .navbar .navbar-header .sidebar-collapse {
       display: inline-block;
       float: right;

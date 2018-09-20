@@ -2,18 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       lang="zh-CN">
-    <head></head>
-    <body>
-        <div th:fragment="title">
-            <h2><i class="fa fa-tachometer"></i> <strong th:text="${childmenu.name}"></strong>
-                <span>// Place subtitle here...</span></h2>
-            <div class="breadcrumbs">
-                <ol class="breadcrumb">
-                    <li>You are here</li>
-                    <li><a th:href="${parentmenu.url}" href="index.html" th:text="${parentmenu.name}"></a></li>
-                    <li class="active" th:text="${childmenu.name}"></li>
+<head></head>
+<body>
+    <div th:fragment="title">
+        <div class="breadcrumb-wrapper row">
+            <div class="col-12 col-lg-3 col-md-6">
+                <h1 class="page-title" th:text="${childmenu.name == null || childmenu.name == ''} ? ${parentmenu.name} : ${childmenu.name}"></h1>
+            </div>
+            <div class="col-12 col-lg-9 col-md-6">
+                <ol class="breadcrumb float-right">
+                    <li ><a th:href="${parentmenu.url}" th:text="${parentmenu.name}"></a></li>
+                    <li th:class="${childmenu.name == null || childmenu.name == ''} ? '' : 'active'"><a th:href="${childmenu.url}" th:text="${childmenu.name}"></a></li>
                 </ol>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>
