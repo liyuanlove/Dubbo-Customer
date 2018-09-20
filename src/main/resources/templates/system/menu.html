@@ -39,8 +39,8 @@
                                         <td><i v-bind:class="[smenu.icon?smenu.icon:'glyphicon glyphicon-plus-sign']"></i></td>
                                         <td v-bind:title="smenu.order"><input type="number" v-model="smenu.order" class="form-control" /></td>
                                         <td>
-                                            <a th:href="'#'" @click.prevent.stop="save(smenu,outterindex)" class="glyphicon glyphicon-ok pull-left"></a>
-                                            <a th:href="'#'" @click.prevent.stop="del(menu,smenu,innerindex)" class="glyphicon glyphicon-trash pull-right"></a>
+                                            <a th:href="'#'" @click.stop.prevent="save(smenu,outterindex)" class="glyphicon glyphicon-ok pull-left"></a>
+                                            <a th:href="'#'" @click.stop.prevent="del(menu,smenu,innerindex)" class="glyphicon glyphicon-trash pull-right"></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -71,8 +71,6 @@
                             })
                         },
                         save:function(menu,index){
-                            console.log(this);
-                            //return;
                             axios.post('/api/menu/',menu,{
                                 transformRequest:[
                                     function(data){
@@ -87,9 +85,8 @@
                                 ]
                             }).then(response => {
                                 console.log('post发送Ajax请求,请求成功',response.data)
+                                response.data.menu.show = true;
                                 vm.$set(vm.menus,index,response.data.menu);
-                                Vue.set(menu,"show",true)
-                                console.log(this);
                             }).catch(response => {
                                 console.log('post发送Ajax请求,请求失败',response)
                             });
@@ -108,7 +105,6 @@
                             }else{
                                 menu.childrenMenus.splice(index,1);
                             }
-                            Vue.set(menu,"show",true)
                         },
                         tableToggle:function(menu){
                             if(menu.show){
