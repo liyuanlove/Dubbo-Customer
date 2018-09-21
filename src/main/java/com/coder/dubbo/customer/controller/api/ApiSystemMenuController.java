@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Scope("prototype")
 @RestController
 @RequestMapping("/api/menu")
@@ -24,12 +22,14 @@ public class ApiSystemMenuController {
         JSONObject json = new JSONObject();
         if(i > 0){
             json.put("code",State.SUCCESS.getValue());
+            json.put("state",State.SUCCESS);
             json.put("msg",State.SUCCESS);
             SysMenu pmenu = sysMenuService.selectByPrimaryKey(sysMenu.getPid());
             json.put("menu",pmenu);
         }else{
-            json.put("code",State.FAIL);
-            json.put("msg",State.FAIL.getValue());
+            json.put("code",State.FAIL.getValue());
+            json.put("state",State.FAIL);
+            json.put("msg",State.FAIL);
         }
         return json.toJSONString();
     }
@@ -40,10 +40,12 @@ public class ApiSystemMenuController {
         JSONObject json = new JSONObject();
         if(i > 0){
             json.put("code",State.SUCCESS.getValue());
+            json.put("state",State.SUCCESS);
             json.put("msg",State.SUCCESS);
         }else{
-            json.put("code",State.FAIL);
-            json.put("msg",State.FAIL.getValue());
+            json.put("code",State.FAIL.getValue());
+            json.put("state",State.FAIL);
+            json.put("msg",State.FAIL);
         }
         return json.toJSONString();
     }

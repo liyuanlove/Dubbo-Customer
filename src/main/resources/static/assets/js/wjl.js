@@ -1,4 +1,19 @@
 NProgress.configure({ ease: 'ease', speed: 500,showSpinner: true,trickleRate: 0.2, trickleSpeed: 100 })
+Vue.prototype.showNotification = function (data) {
+    console.log(data);
+    $.notify({
+        icon: 'lni-world',
+        message: data.msg
+
+    },{
+        type: (data.code == 1 ? 'success' : 'danger'),
+        timer: 50,
+        placement: {
+            from: 'top',
+            align: 'center'
+        }
+    });
+};
 $(function () {
     NProgress.start();
 })
@@ -22,8 +37,10 @@ axios.interceptors.request.use(function(config){
 //添加一个响应拦截器
 axios.interceptors.response.use(function(res){
     NProgress.done();
+    new Vue().showNotification(res.data)
     return res;
 },function(err){
     NProgress.done();
     return Promise.reject(error);
-})
+});
+
