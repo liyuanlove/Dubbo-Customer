@@ -52,6 +52,7 @@
             </div>
         </div>
         <div layout:fragment="foot">
+
             <script type="text/javascript" th:inline="javascript">
                 /*<![CDATA[*/
 
@@ -72,6 +73,8 @@
                             })
                         },
                         save:function(menu,index){
+                            NProgress.start();
+                            console.log(NProgress)
                             axios.post('/api/menu/',menu,{
                                 transformRequest:[
                                     function(data){
@@ -88,6 +91,7 @@
                                 console.log('post发送Ajax请求,请求成功',response.data)
                                 response.data.menu.show = true;
                                 vm.$set(vm.menus,index,response.data.menu);
+                                NProgress.done();
                             }).catch(response => {
                                 console.log('post发送Ajax请求,请求失败',response)
                             });

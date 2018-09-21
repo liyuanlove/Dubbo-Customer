@@ -1,0 +1,4 @@
+div#nprogress div.bar{
+    z-index: 99999;
+    margin-top: 65px;
+}
