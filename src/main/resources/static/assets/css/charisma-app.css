@@ -129,6 +129,7 @@ select {
 .box-header {
     border: none;
     padding-top: 5px;
+    padding-left: 10px;
     border-bottom: 1px solid #DEDEDE;
     border-radius: 3px 3px 0 0;
     -webkit-border-radius: 3px 3px 0 0;

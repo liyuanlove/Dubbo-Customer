@@ -24,7 +24,8 @@ public class ApiSystemMenuController {
             json.put("code",State.SUCCESS.getValue());
             json.put("state",State.SUCCESS);
             json.put("msg",State.SUCCESS);
-            SysMenu pmenu = sysMenuService.selectByPrimaryKey(sysMenu.getPid());
+            int id = sysMenu.getPid() > 0 ? sysMenu.getPid() : sysMenu.getId();
+            SysMenu pmenu = sysMenuService.selectByPrimaryKey(id);
             json.put("menu",pmenu);
         }else{
             json.put("code",State.FAIL.getValue());

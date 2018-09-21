@@ -1,6 +1,7 @@
 div#nprogress div.bar{
     z-index: 2147483647;
     margin-top: 65px;
+    background: red !important;
 }
 .modal{
     z-index: 2147483647 !important;

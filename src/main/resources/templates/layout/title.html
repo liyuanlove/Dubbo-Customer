@@ -20,11 +20,9 @@
                             <span th:text="${parentMenu.name}"></span>
                         </a>
                     </li>
-                    <li th:class="'active'">
-                        <a th:href="${childMenu.url}" >
-                            <i th:class="${childMenu.icon}"></i>
-                            <span th:text="${childMenu.name}"></span>
-                        </a>
+                    <li th:class="'active'">&nbsp;&gt;&nbsp;
+                        <i th:class="${childMenu.icon}"></i>
+                        <span th:text="${childMenu.name}"></span>
                     </li>
                 </ol>
             </div>
