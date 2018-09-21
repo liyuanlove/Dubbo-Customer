@@ -52,10 +52,8 @@
             </div>
         </div>
         <div layout:fragment="foot">
-
             <script type="text/javascript" th:inline="javascript">
                 /*<![CDATA[*/
-
                 var data = [[${data}]];
                 var vm = new Vue({
                     el: '#app',
@@ -73,8 +71,6 @@
                             })
                         },
                         save:function(menu,index){
-                            NProgress.start();
-                            console.log(NProgress)
                             axios.post('/api/menu/',menu,{
                                 transformRequest:[
                                     function(data){
@@ -88,24 +84,19 @@
                                     }
                                 ]
                             }).then(response => {
-                                console.log('post发送Ajax请求,请求成功',response.data)
                                 response.data.menu.show = true;
                                 vm.$set(vm.menus,index,response.data.menu);
-                                NProgress.done();
                             }).catch(response => {
-                                console.log('post发送Ajax请求,请求失败',response)
                             });
                         },
                         del:function(menu,smenu,index){
                             if(smenu.id){
                                 axios.delete('/api/menu/'+smenu.id)
                                 .then(response => {
-                                    console.log('post发送Ajax请求,请求成功',response.data)
                                     if(response.data.code == 1){
                                         menu.childrenMenus.splice(index,1);
                                     }
                                 }).catch(response => {
-                                    console.log('post发送Ajax请求,请求失败',response)
                                 });
                             }else{
                                 menu.childrenMenus.splice(index,1);
@@ -115,15 +106,13 @@
                             if(menu.show){
                                 menu.show = !menu.show;
                             }else{
-                                Vue.set(menu,"show",true)
+                                vm.$set(menu,"show",true)
                             }
                         }
                     }
                 });
-
                 /*]]>*/
             </script>
-
         </div>
     </body>
 </html>
