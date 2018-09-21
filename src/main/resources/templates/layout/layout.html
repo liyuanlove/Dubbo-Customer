@@ -12,15 +12,18 @@
                 <div class="header navbar" th:include="layout/navbar::navbar"></div>
                 <div class="side-nav expand-lg" th:include="layout/nav::nav"></div>
                 <div class="page-container">
-                    <div class="main-content" layout:fragment="content"></div>
+                    <div class="main-content">
+                        <div class="container-fluid" th:include="layout/title::title"></div>
+                        <div class="container-fluid" >
+                            <div layout:fragment="content"></div>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </div>
         <div id="preloader">
             <div class="loader" id="loader-1"></div>
         </div>
-
         <div th:include="layout/foot::foot"></div>
         <div layout:fragment="foot"></div>
     </body>

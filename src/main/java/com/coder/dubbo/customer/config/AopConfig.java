@@ -4,6 +4,7 @@ import com.coder.dubbo.customer.util.Current;
 import com.coder.springbootdomecollection.model.SysMenu;
 import com.coder.util.CollectionUtils;
 import com.coder.util.StringUtils;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -30,21 +31,29 @@ public class AopConfig {
             if(obj instanceof Model){
                 ((Model) obj).addAttribute("title",StringUtils.EMPTY);
                 ((Model) obj).addAttribute("menus",Current.menus());
-                ((Model) obj).addAttribute("parentmenu",new SysMenu());
-                ((Model) obj).addAttribute("childmenu",new SysMenu());
                 HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
                 String uri = StringUtils.null2Empty(request.getRequestURI());
                 List<SysMenu> menus = Current.menus();
                 block:{
                     if(!CollectionUtils.isNullOrEmptyStrict(menus)){
                         for(SysMenu menu : menus){
+                            menu.setShow(Boolean.FALSE);
+                            if(uri.equals(menu.getUrl())){
+                                menu.setShow(Boolean.TRUE);
+                                ((Model) obj).addAttribute("title",menu.getName() + " - ");
+                                ((Model) obj).addAttribute("parentMenu",menu);
+                                break block;
+                            }
                             List<SysMenu> childMenus = menu.getChildrenMenus();
                             if(!CollectionUtils.isNullOrEmptyStrict(childMenus)){
                                 for(SysMenu childMenu : childMenus){
+                                    childMenu.setShow(Boolean.FALSE);
                                     if(uri.equals(childMenu.getUrl())){
+                                        menu.setShow(Boolean.TRUE);
+                                        childMenu.setShow(Boolean.TRUE);
                                         ((Model) obj).addAttribute("title",childMenu.getName() + " - ");
-                                        ((Model) obj).addAttribute("parentmenu",menu);
-                                        ((Model) obj).addAttribute("childmenu",childMenu);
+                                        ((Model) obj).addAttribute("parentMenu",menu);
+                                        ((Model) obj).addAttribute("childMenu",childMenu);
                                         break block;
                                     }
                                 }

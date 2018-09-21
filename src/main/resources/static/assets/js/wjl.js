@@ -1,5 +1,5 @@
+NProgress.configure({ ease: 'ease', speed: 500,showSpinner: true,trickleRate: 0.2, trickleSpeed: 100 })
 $(function () {
-    NProgress.configure({ easing: 'ease', speed: 500, showSpinner: false })
     NProgress.start();
 })
 $(window).load(function(){

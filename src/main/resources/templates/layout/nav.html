@@ -15,7 +15,7 @@
         <div  th:fragment="nav">
             <div class="side-nav-inner">
                 <ul class="side-nav-menu">
-                    <li th:each="menu:${menus}"  th:class="${menu.url == parentmenu.url} ? 'nav-item dropdown open' : 'nav-item dropdown'">
+                    <li th:each="menu:${menus}"  th:class="${menu.show} ? 'nav-item dropdown open' : 'nav-item dropdown'">
                         <a href="#" class="dropdown-toggle">
                             <span th:class="'icon-holder'">
                                 <i th:class="${menu.icon}"></i>
@@ -25,8 +25,8 @@
                                 <i th:class="'lni-chevron-right'"></i>
                             </span>
                         </a>
-                        <ul th:class="'dropdown-menu sub-down'" th:style="${menu.url == parentmenu.url} ? 'display:block;' : 'display:none;'">
-                            <li th:each="smenu:${menu.childrenMenus}" th:class="${smenu.url == childmenu.url} ? 'active' : ''">
+                        <ul th:class="'dropdown-menu sub-down'" th:style="${menu.show} ? 'display:block;' : 'display:none;'">
+                            <li th:each="smenu:${menu.childrenMenus}" th:class="${smenu.show} ? 'active' : ''">
                                 <a th:href="${smenu.url}"><i th:class="${smenu.icon}"></i> <span th:text="${smenu.name}"></span></a>
                             </li>
                         </ul>

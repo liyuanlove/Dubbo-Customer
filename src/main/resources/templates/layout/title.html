@@ -5,14 +5,27 @@
 <head></head>
 <body>
     <div th:fragment="title">
-        <div class="breadcrumb-wrapper row">
+        <div class="breadcrumb-wrapper row" th:if="${parentMenu} != null">
             <div class="col-12 col-lg-3 col-md-6">
-                <h1 class="page-title" th:text="${childmenu.name == null || childmenu.name == ''} ? ${parentmenu.name} : ${childmenu.name}"></h1>
+                <h1 class="page-title" >
+                    <i th:class="${childMenu} != null ? ${childMenu.icon} : (${parentMenu} != null ? ${parentMenu.icon} : '')"></i>
+                    <span th:text="${childMenu} != null ? ${childMenu.name} : (${parentMenu} != null ? ${parentMenu.name} : '')"></span>
+                </h1>
             </div>
-            <div class="col-12 col-lg-9 col-md-6">
+            <div class="col-12 col-lg-9 col-md-6" th:if="${childMenu} != null">
                 <ol class="breadcrumb float-right">
-                    <li ><a th:href="${parentmenu.url}" th:text="${parentmenu.name}"></a></li>
-                    <li th:class="${childmenu.name == null || childmenu.name == ''} ? '' : 'active'"><a th:href="${childmenu.url}" th:text="${childmenu.name}"></a></li>
+                    <li >
+                        <a th:href="${parentMenu.url}" >
+                            <i th:class="${parentMenu.icon}"></i>
+                            <span th:text="${parentMenu.name}"></span>
+                        </a>
+                    </li>
+                    <li th:class="'active'">
+                        <a th:href="${childMenu.url}" >
+                            <i th:class="${childMenu.icon}"></i>
+                            <span th:text="${childMenu.name}"></span>
+                        </a>
+                    </li>
                 </ol>
             </div>
         </div>
