@@ -2,8 +2,9 @@ div#nprogress div.bar{
     z-index: 2147483647;
     margin-top: 65px;
 }
-/*div[data-notify="container"]{*/
-    /*position: fixed;*/
-    /*z-index: 2147483647;*/
-    /*margin-top: 100px;*/
-/*}*/
+.modal{
+    z-index: 2147483647 !important;
+}
+tr .fa{
+    font-size: 24px;
+}

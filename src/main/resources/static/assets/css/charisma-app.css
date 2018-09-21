@@ -181,14 +181,15 @@ select {
     clear: none;
     float: left;
     margin: 0 2px;
-    height: 20px;
-    width: 5px;
-    margin-top: 1px;
+    height: 26px;
+    /* width: 5px; */
+    /* margin-top: 4px; */
 }
 
 .box-icon a i {
-    margin-left: -6px;
-    top: -2px;
+    /* margin-left: -6px; */
+    /* top: -2px; */
+    font-size: 19px;
 }
 
 .box-content {
