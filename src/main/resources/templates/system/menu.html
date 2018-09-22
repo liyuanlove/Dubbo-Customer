@@ -9,7 +9,7 @@
         <div id="app" layout:fragment="content">
             <div class="row">
                 <div class="col-12">
-                    <button class="btn btn-common" data-toggle="modal" data-target=".menu-modal" @click="index = vm.menus.length;">
+                    <button class="btn btn-common" data-toggle="modal" data-target=".menu-modal" >
                         <i class="fa fa-clone"></i>
                     </button>
                 </div>
@@ -24,14 +24,16 @@
                             </h2>
                             <div class="box-icon">
                                 <a href="#" @click.prevent.stop="add(menu)" class="btn btn-round btn-default"><i class="mdi mdi-database-plus"></i></a>
-                                <a href="#" @click.prevent.stop="update(menu,outterindex)" class="btn btn-round btn-default"><i class="fa fa-gear"></i></a>
+                                <a href="#" @click.prevent.stop="update(menu)" class="btn btn-round btn-default"><i class="fa fa-gear"></i></a>
+                                <a href="#" @click.prevent.stop="delParentMenu(menu,outterindex)" class="btn btn-round btn-default"><i class="fa fa-trash-o"></i></a>
+
                             </div>
                         </div>
                         <div class="box-content" v-if="menu.show">
                             <table class="table" >
                                 <thead>
                                     <tr>
-                                        <th style="width: 35px;"><strong>#</strong></th>
+                                        <th ><strong>#</strong></th>
                                         <th ><strong>NAME</strong></th>
                                         <th ><strong>URL</strong></th>
                                         <th ><strong>ICON</strong></th>
@@ -41,11 +43,11 @@
                                 </thead>
                                 <tbody >
                                     <tr v-for="(smenu,innerindex) in menu.childrenMenus" :key="smenu.id">
-                                        <td >{{smenu.id}}</td>
-                                        <td v-bind:title="smenu.name"><input type="text" v-model="smenu.name" class="form-control" /></td>
-                                        <td v-bind:title="smenu.url"><input type="text" v-model="smenu.url" class="form-control" /></td>
-                                        <td><i v-bind:class="[smenu.icon?smenu.icon:'glyphicon glyphicon-plus-sign']"></i></td>
-                                        <td v-bind:title="smenu.order"><input type="number" v-model="smenu.order" class="form-control" /></td>
+                                        <td><i v-bind:class="[smenu.icon]"></i></td>
+                                        <td><input type="text" v-model="smenu.name" class="form-control" /></td>
+                                        <td><input type="text" v-model="smenu.url" class="form-control" /></td>
+                                        <td><input type="text" v-model="smenu.icon" class="form-control" /></td>
+                                        <td><input type="number" v-model="smenu.order" class="form-control" /></td>
                                         <td>
                                             <i class="fa fa-pencil-square-o pull-left" @click.stop.prevent="save(smenu,outterindex)"></i>
                                             <i class="fa fa-trash pull-right" @click.stop.prevent="del(menu,smenu,innerindex)"></i>
@@ -61,7 +63,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">新增/修改</h5>
+                            <h5 class="modal-title">Save/Update</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
@@ -79,7 +81,7 @@
                                                     <input type="text" class="form-control" id="url" v-model="menu.url">
                                                 </div>
                                                 <div class="form-group col-12">
-                                                    <label for="icon">ICON</label>
+                                                    <label for="icon">ICON <i v-bind:class="[menu.icon]"></i></label>
                                                     <input type="text" class="form-control" id="icon" v-model="menu.icon">
                                                 </div>
                                                 <div class="form-group col-12">
@@ -94,7 +96,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-common" @click="save(menu)">Save changes</button>
+                            <button type="button" class="btn btn-common" @click="saveParentMenu()">Save</button>
                         </div>
                     </div>
                 </div>
@@ -112,34 +114,29 @@
                             id:0,
                             name:"",
                             url:"",
-                            icon:"glyphicon glyphicon-plus-sign",
+                            icon:"fa fa-plus",
                             order:1,
                             pid:0
-                        },
-                        index:data.length
+                        }
                     },
                     methods: {
                         add:function(menu){
+                            if(!menu.show){
+                                vm.$set(menu,"show",true)
+                            }
                             menu.childrenMenus.push({
                                 name:'',
                                 url:'',
-                                icon : 'glyphicon glyphicon-plus-sign',
+                                icon : 'fa fa-plus',
                                 pid : menu.id,
-                                order:0
+                                order:menu.childrenMenus[menu.childrenMenus.length - 1]["order"] + 1
                             })
                         },
                         update:function(menu,index){
                             Object.assign(vm.menu,menu);
-                            vm.index = index;
                             $("#menu-modal").modal("show");
                         },
                         save:function(menu,index){
-
-                            $("#menu-modal").modal("hide");
-                            if(typeof index == 'undefined'){
-                                index = vm.index;
-                            }
-                            console.log(index);
                             axios.post('/api/menu/',menu,{
                                 transformRequest:[
                                     function(data){
@@ -154,7 +151,6 @@
                                 ]
                             }).then(response => {
                                 response.data.menu.show = true;
-                                console.log(index,"aaa");
                                 vm.$set(vm.menus,index,response.data.menu);
                             }).catch(response => {
                             });
@@ -178,6 +174,36 @@
                             }else{
                                 vm.$set(menu,"show",true)
                             }
+                        },
+                        saveParentMenu:function(){
+                            axios.post('/api/menu/parentmenu',vm.menu,{
+                                transformRequest:[
+                                    function(data){
+                                        let params = '';
+                                        for(let index in data){
+                                            if(typeof data[index] != 'object'){
+                                                params += index + '=' + data[index] + '&'
+                                            }
+                                        }
+                                        return params;
+                                    }
+                                ]
+                            }).then(response => {
+                                if(response.data.code === 1){
+                                    $("#menu-modal").modal("hide");
+                                    vm.menus = response.data.menus;
+                                }
+                            }).catch(response => {
+                            });
+                        },
+                        delParentMenu:function(menu,index){
+                            axios.delete('/api/menu/' + menu.id)
+                            .then(response => {
+                                if(response.data.code == 1){
+                                    vm.menus.splice(index,1);
+                                }
+                            }).catch(response => {
+                            });
                         }
                     }
                 });
@@ -187,7 +213,7 @@
                             id:0,
                             name:"",
                             url:"",
-                            icon:"glyphicon glyphicon-plus-sign",
+                            icon:"fa fa-plus",
                             order:1,
                             pid:0
                         })

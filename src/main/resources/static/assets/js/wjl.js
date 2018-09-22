@@ -1,10 +1,8 @@
 ;NProgress.configure({ ease: 'ease', speed: 500,showSpinner: true,trickleRate: 0.2, trickleSpeed: 100 });
 Vue.prototype.showNotification = function (data) {
-    console.log(data);
     $.notify({
         icon: 'mdi mdi-signal-variant',
         message: data.msg
-
     },{
         type: (data.code == 1 ? 'success' : 'danger'),
         timer: 50,
